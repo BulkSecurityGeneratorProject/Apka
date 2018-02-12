@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="jhipsterApp.client.home.title">Clients</span>
-        <button  *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary float-right jh-create-entity create-client-my-suffix" [routerLink]="['/', { outlets: { popup: ['client-my-suffix-new'] } }]">
+        <button class="btn btn-primary float-right jh-create-entity create-client-my-suffix" [routerLink]="['/', { outlets: { popup: ['client-my-suffix-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="jhipsterApp.client.home.createLabel">
             Create new Client
@@ -16,12 +16,12 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="jhipsterApp.client.name">Name</span></th>
-            <th><span jhiTranslate="jhipsterApp.client.surname">Surname</span></th>
-            <th><span jhiTranslate="jhipsterApp.client.phoneNumber">Phone Number</span></th>
-            <th><span jhiTranslate="jhipsterApp.client.emailAdress">Email Adress</span></th>
-            <th></th>
+                <th><span jhiTranslate="global.field.id">ID</span></th>
+                <th><span jhiTranslate="jhipsterApp.client.name">Name</span></th>
+                <th><span jhiTranslate="jhipsterApp.client.surname">Surname</span></th>
+                <th><span jhiTranslate="jhipsterApp.client.phoneNumber">Phone Number</span></th>
+                <th><span jhiTranslate="jhipsterApp.client.emailAdress">Email Adress</span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>

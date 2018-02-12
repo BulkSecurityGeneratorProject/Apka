@@ -3,6 +3,7 @@
         "room" : {
             "home": {
                 "title": "Rooms",
+                "gallery": "This is Gallery of Room with ID: {{ id }}",
                 "createLabel": "Create a new Room",
                 "createOrEditLabel": "Create or edit a Room"
             },
@@ -20,11 +21,12 @@
             "price": "Price",
             "state": "State",
             "inventory": "Inventory",
-            "roomimg1": "Roomimg 1",
-            "roomimg2": "Roomimg 2",
-            "roomimg3": "Roomimg 3",
-            "roomimg4": "Roomimg 4",
-            "roomimg5": "Roomimg 5",
+            "images": "Images",
+            "roomimg1": "Image 1",
+            "roomimg2": "Image 2",
+            "roomimg3": "Image 3",
+            "roomimg4": "Image 4",
+            "roomimg5": "Image 5",
             "reservation": "Reservation"
         }
     }

@@ -2,29 +2,31 @@
     "jhipsterApp": {
         "room" : {
             "home": {
-                "title": "Rooms",
-                "createLabel": "Dodaj Room",
-                "createOrEditLabel": "Dodaj lub edytuj: Room"
+                "title": "Pokoje",
+                "gallery": "To jest Galeria Pokoju z ID: {{ id }}",
+                "createLabel": "Dodaj Pokój",
+                "createOrEditLabel": "Dodaj lub edytuj: Pokój"
             },
-            "created": "Utworzono nowy Room z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Room z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Room z identyfikatorem {{ param }}",
+            "created": "Utworzono nowy Pokój z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Pokój z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Pokój z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Room {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Pokój {{ id }}?"
             },
             "detail": {
-                "title": "Room"
+                "title": "Pokój"
             },
-            "roomNumber": "Room Number",
-            "numberOfPersons": "Number Of Persons",
-            "price": "Price",
-            "state": "State",
-            "inventory": "Inventory",
-            "roomimg1": "Roomimg 1",
-            "roomimg2": "Roomimg 2",
-            "roomimg3": "Roomimg 3",
-            "roomimg4": "Roomimg 4",
-            "roomimg5": "Roomimg 5",
+            "roomNumber": "Numer Pokoju",
+            "numberOfPersons": "Liczba Osób",
+            "price": "Cena",
+            "state": "Stan",
+            "inventory": "Wyposażenie",
+            "images": "Zdjęcia",
+            "roomimg1": "Zdjęcie 1",
+            "roomimg2": "Zdjęcie 2",
+            "roomimg3": "Zdjęcie 3",
+            "roomimg4": "Zdjęcie 4",
+            "roomimg5": "Zdjęcie 5",
             "reservation": "Reservation"
         }
     }

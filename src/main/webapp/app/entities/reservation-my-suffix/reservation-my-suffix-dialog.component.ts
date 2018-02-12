@@ -26,6 +26,15 @@ export class ReservationMySuffixDialogComponent implements OnInit {
 
     rooms: RoomMySuffix[];
 
+    infoArray = ['', '', '', ''];
+    infocontentArray = [ 'Wprowadz date przyjazdu!', 'Wprowadz date wyjazdu!', 'Wybierz Clienta!', 'Wybierz Pokoj!'];
+    pom = 1;
+    disableButton = 1;
+    inputCheck = [ 0, 0, 0, 0, 1];
+    pomString = "";
+    startDateString = "";
+    finishDateString = "";
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,
@@ -85,6 +94,73 @@ export class ReservationMySuffixDialogComponent implements OnInit {
     trackRoomById(index: number, item: RoomMySuffix) {
         return item.id;
     }
+
+    ValidateFunction(i) {
+        switch(i){
+            case 0:
+                this.pom = this.reservation.startDate;
+                break;
+            case 1:
+                this.pom = this.reservation.finishDate;
+                break;
+            case 2:
+                this.pom = this.reservation.clientId;
+                break;
+            case 3:
+                this.pom = this.reservation.roomId;
+                break;
+        }
+        if (this.pom){
+            this.infoArray[i] = '';
+            this.inputCheck[i] = 1;
+            if ((i === 1 || i ===0) && this.inputCheck[0] && this.inputCheck[1]) {
+                this.finishDateString = '';
+                this.startDateString = '';
+                this.pomString = this.reservation.startDate.toString();
+                for( var j = 0; j < 10 ; j++){
+                    this.startDateString += this.pomString[j];
+                }
+                this.pomString = this.reservation.finishDate.toString();
+                for( var j = 0; j < 10 ; j++){
+                    this.finishDateString += this.pomString[j];
+                }
+                for ( var j = 0; j < this.finishDateString.length; j++){
+                    if( this.startDateString[j] !== this.finishDateString[j]){
+                        if (this.startDateString[j] >= this.finishDateString[j]){
+                            this.inputCheck[4] = 0;
+                            this.infoArray[i] = 'Finish date must be later then start date';
+                        }
+                        else{
+                            this.inputCheck[4] = 1;
+                            this.infoArray[0] = '';
+                            this.infoArray[1] = '';
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+        else{
+            this.infoArray[i] = this.infocontentArray[i];
+            this.inputCheck[i] = 0;
+        }
+        if(this.inputCheck[0] && this.inputCheck[1] && this.inputCheck[2] && this.inputCheck[3] && this.inputCheck[4]){
+            this.disableButton = 0;
+        }
+        else{
+            this.disableButton = 1;
+        }
+    }
+
+    getColor(i){
+        if ( this.infoArray[i] !== ''){
+            return 'red';
+        }
+        else{
+            return '#D4D5D6';
+        }
+    }
+
 }
 
 @Component({

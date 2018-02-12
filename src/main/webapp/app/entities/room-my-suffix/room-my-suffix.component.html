@@ -16,58 +16,28 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.roomNumber">Room Number</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.numberOfPersons">Number Of Persons</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.price">Price</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.state">State</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.inventory">Inventory</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.roomimg1">Roomimg 1</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.roomimg2">Roomimg 2</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.roomimg3">Roomimg 3</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.roomimg4">Roomimg 4</span></th>
-            <th><span jhiTranslate="jhipsterApp.room.roomimg5">Roomimg 5</span></th>
+            <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
+            <th class="centerText"><span jhiTranslate="jhipsterApp.room.roomNumber">Room Number</span></th>
+            <th class="centerText"><span jhiTranslate="jhipsterApp.room.numberOfPersons">Number Of Persons</span></th>
+            <th class="centerText"><span jhiTranslate="jhipsterApp.room.price">Price</span></th>
+            <th class="centerText"><span jhiTranslate="jhipsterApp.room.state">State</span></th>
+            <th class="centerText"><span jhiTranslate="jhipsterApp.room.inventory">Inventory</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.room.images">Images</span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let room of rooms ;trackBy: trackId">
-                <td><a [routerLink]="['../room-my-suffix', room.id ]">{{room.id}}</a></td>
-                <td>{{room.roomNumber}}</td>
-                <td>{{room.numberOfPersons}}</td>
-                <td>{{room.price}}</td>
-                <td>{{room.state}}</td>
-                <td>{{room.inventory}}</td>
-                <td>
-                    <a *ngIf="room.roomimg1" (click)="openFile(room.roomimg1ContentType, room.roomimg1)">
-                        <img [src]="'data:' + room.roomimg1ContentType + ';base64,' + room.roomimg1" style="max-height: 30px;" alt="room image"/>
-                    </a>
-                    <span *ngIf="room.roomimg1">{{room.roomimg1ContentType}}, {{byteSize(room.roomimg1)}}</span>
+                <td class="centerText"><a [routerLink]="['../room-my-suffix', room.id ]">{{room.id}}</a></td>
+                <td class="centerText">{{room.roomNumber}}</td>
+                <td class="centerText">{{room.numberOfPersons}}</td>
+                <td class="centerText"><p *ngIf="room.price">{{room.price}} zł</p></td>
+                <td class="centerText">
+                    <p *ngIf="room.state == true">unavailable</p>
+                    <p *ngIf="room.state == false">available</p>
                 </td>
-                <td>
-                    <a *ngIf="room.roomimg2" (click)="openFile(room.roomimg2ContentType, room.roomimg2)">
-                        <img [src]="'data:' + room.roomimg2ContentType + ';base64,' + room.roomimg2" style="max-height: 30px;" alt="room image"/>
-                    </a>
-                    <span *ngIf="room.roomimg2">{{room.roomimg2ContentType}}, {{byteSize(room.roomimg2)}}</span>
-                </td>
-                <td>
-                    <a *ngIf="room.roomimg3" (click)="openFile(room.roomimg3ContentType, room.roomimg3)">
-                        <img [src]="'data:' + room.roomimg3ContentType + ';base64,' + room.roomimg3" style="max-height: 30px;" alt="room image"/>
-                    </a>
-                    <span *ngIf="room.roomimg3">{{room.roomimg3ContentType}}, {{byteSize(room.roomimg3)}}</span>
-                </td>
-                <td>
-                    <a *ngIf="room.roomimg4" (click)="openFile(room.roomimg4ContentType, room.roomimg4)">
-                        <img [src]="'data:' + room.roomimg4ContentType + ';base64,' + room.roomimg4" style="max-height: 30px;" alt="room image"/>
-                    </a>
-                    <span *ngIf="room.roomimg4">{{room.roomimg4ContentType}}, {{byteSize(room.roomimg4)}}</span>
-                </td>
-                <td>
-                    <a *ngIf="room.roomimg5" (click)="openFile(room.roomimg5ContentType, room.roomimg5)">
-                        <img [src]="'data:' + room.roomimg5ContentType + ';base64,' + room.roomimg5" style="max-height: 30px;" alt="room image"/>
-                    </a>
-                    <span *ngIf="room.roomimg5">{{room.roomimg5ContentType}}, {{byteSize(room.roomimg5)}}</span>
-                </td>
+                <td class="centerText">{{room.inventory}}</td>
+                <td class="centerText"><a [routerLink]="['/', { outlets: { popup: 'room-my-suffix/'+ room.id + '/edit/img'} }]">img</a></td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
