@@ -1,0 +1,34 @@
+<form name="deleteForm" (ngSubmit)="confirmDelete(room.id)">
+    <div class="modal-header centerStuff">
+        <h4 class="modal-title" jhiTranslate="jhipsterApp.room.home.gallery" translateValues="{id: '{{room.id}}'}">This is Gallery</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <br/>
+    <div id="testowy" [@imgAnimation]="state" >
+        <div id="photoContainer" >
+            <a *ngIf="currentImg == 0" (click)="openFile(room.roomimg1ContentType, room.roomimg1)" >
+                <img class="imgResize"  [src]="'data:' + room.roomimg1ContentType + ';base64,' + room.roomimg1" style="max-width: 100%;" alt="room image"/>
+            </a>
+            <a *ngIf="currentImg == 1" (click)="openFile(room.roomimg2ContentType, room.roomimg2)">
+                <img class="imgResize" [src]="'data:' + room.roomimg2ContentType + ';base64,' + room.roomimg2" style="max-width: 100%;" alt="room image"/>
+            </a>
+            <a *ngIf="currentImg == 2" (click)="openFile(room.roomimg3ContentType, room.roomimg3)">
+                <img class="imgResize" [src]="'data:' + room.roomimg3ContentType + ';base64,' + room.roomimg3" style="max-width: 100%;" alt="room image"/>
+            </a>
+            <a *ngIf="currentImg == 3" (click)="openFile(room.roomimg4ContentType, room.roomimg4)">
+                <img class="imgResize" [src]="'data:' + room.roomimg4ContentType + ';base64,' + room.roomimg4" style="max-width: 100%;" alt="room image"/>
+            </a>
+            <a *ngIf="currentImg == 4" (click)="openFile(room.roomimg5ContentType, room.roomimg5)">
+                <img class="imgResize" [src]="'data:' + room.roomimg5ContentType + ';base64,' + room.roomimg5" style="max-width: 100%;" alt="room image"/>
+            </a>
+        </div>
+        <div id="controlButtons" [@imgAnimation]="state" (@imgAnimation.done)="test($event)">
+            <input type="button" (click)="animateTransition('previous')" [disabled]="currentImg == 0" class="pad" value="Previous" />
+            <input type="button"  (click)="animateTransition('next')" [disabled]="currentImg == imgAmount-1" class="pad odstep" value="Next" />
+        </div>
+    </div>
+    <div class="modal-footer">
+
+    </div>
+</form>
