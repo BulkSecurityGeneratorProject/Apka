@@ -1,0 +1,24 @@
+{
+    "jhipsterApp": {
+        "reservation" : {
+            "home": {
+                "title": "Reservations",
+                "createLabel": "Dodaj Reservation",
+                "createOrEditLabel": "Dodaj lub edytuj: Reservation"
+            },
+            "created": "Utworzono nowy Reservation z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Reservation z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Reservation z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Reservation {{ id }}?"
+            },
+            "detail": {
+                "title": "Reservation"
+            },
+            "startDate": "Start Date",
+            "finishDate": "Finish Date",
+            "client": "Client",
+            "room": "Room"
+        }
+    }
+}
