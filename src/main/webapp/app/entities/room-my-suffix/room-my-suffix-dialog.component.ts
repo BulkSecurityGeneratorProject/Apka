@@ -18,6 +18,7 @@ export class RoomMySuffixDialogComponent implements OnInit {
 
     room: RoomMySuffix;
     isSaving: boolean;
+    validImage = [ 0, 0, 0, 0, 0];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -26,6 +27,13 @@ export class RoomMySuffixDialogComponent implements OnInit {
         private elementRef: ElementRef,
         private eventManager: JhiEventManager
     ) {
+    }
+
+    validateImages(i){
+        this.validImage[i] = 1;
+    }
+    removeImage(i){
+        this.validImage[i] = 0;
     }
 
     ngOnInit() {

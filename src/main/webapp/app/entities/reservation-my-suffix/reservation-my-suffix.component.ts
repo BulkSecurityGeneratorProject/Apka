@@ -14,7 +14,6 @@ export class ReservationMySuffixComponent implements OnInit, OnDestroy {
 reservations: ReservationMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
-dupa;
 
     constructor(
         private reservationService: ReservationMySuffixService,
@@ -43,7 +42,6 @@ dupa;
     ngOnDestroy() {
         this.eventManager.destroy(this.eventSubscriber);
     }
-
 
     trackId(index: number, item: ReservationMySuffix) {
         return item.id;

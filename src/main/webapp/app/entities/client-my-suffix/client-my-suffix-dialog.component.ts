@@ -19,6 +19,14 @@ export class ClientMySuffixDialogComponent implements OnInit {
     client: ClientMySuffix;
     isSaving: boolean;
 
+    color = "red";
+    show = true;
+
+    isTyping = [true, true, true, true];
+    Typing(i,logic){
+        this.isTyping[i] = logic;
+    }
+
     constructor(
         public activeModal: NgbActiveModal,
         private clientService: ClientMySuffixService,

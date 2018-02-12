@@ -5,10 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
-import java.util.Collection;
-import java.util.Optional;
-
-
 /**
  * Spring Data JPA repository for the Reservation entity.
  */

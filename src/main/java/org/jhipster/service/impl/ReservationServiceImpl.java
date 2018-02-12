@@ -1,6 +1,5 @@
 package org.jhipster.service.impl;
 
-import org.jhipster.security.SecurityUtils;
 import org.jhipster.service.ReservationService;
 import org.jhipster.domain.Reservation;
 import org.jhipster.repository.ReservationRepository;
@@ -13,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -86,5 +84,4 @@ public class ReservationServiceImpl implements ReservationService {
         log.debug("Request to delete Reservation : {}", id);
         reservationRepository.delete(id);
     }
-
 }

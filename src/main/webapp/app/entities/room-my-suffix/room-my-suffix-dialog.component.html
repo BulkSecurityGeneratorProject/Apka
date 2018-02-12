@@ -1,4 +1,4 @@
-<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #f="ngForm">
 
     <div class="modal-header">
         <h4 class="modal-title" id="myRoomLabel" jhiTranslate="jhipsterApp.room.home.createOrEditLabel">Create or edit a Room</h4>
@@ -15,17 +15,17 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.roomNumber" for="field_roomNumber">Room Number</label>
             <input type="number" class="form-control" name="roomNumber" id="field_roomNumber"
-                [(ngModel)]="room.roomNumber" />
+                [(ngModel)]="room.roomNumber" #roomNumber="ngModel" required pattern="[0-9]{1,}" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.numberOfPersons" for="field_numberOfPersons">Number Of Persons</label>
             <input type="number" class="form-control" name="numberOfPersons" id="field_numberOfPersons"
-                [(ngModel)]="room.numberOfPersons" />
+                [(ngModel)]="room.numberOfPersons" #numberOfPersons="ngModel" required pattern="[0-9]{1,}" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.price" for="field_price">Price</label>
             <input type="number" class="form-control" name="price" id="field_price"
-                [(ngModel)]="room.price" />
+                [(ngModel)]="room.price" #price="ngModel" required pattern="[0-9]{1,}" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.state" for="field_state">State</label>
@@ -43,79 +43,79 @@
                 <img [src]="'data:' + room.roomimg1ContentType + ';base64,' + room.roomimg1" style="max-height: 100px;" *ngIf="room.roomimg1" alt="room image"/>
                 <div *ngIf="room.roomimg1" class="form-text text-danger clearfix">
                     <span class="pull-left">{{room.roomimg1ContentType}}, {{byteSize(room.roomimg1)}}</span>
-                    <button type="button" (click)="clearInputImage('roomimg1', 'roomimg1ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                    <button type="button" (click)="clearInputImage('roomimg1', 'roomimg1ContentType', 'fileImage'); removeImage(0)" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" id="file_roomimg1" (change)="setFileData($event, room, 'roomimg1', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                <input type="file" id="file_roomimg1" (change)="setFileData($event, room, 'roomimg1', true); validateImages(0)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
             <input type="hidden" class="form-control" name="roomimg1" id="field_roomimg1"
                 [(ngModel)]="room.roomimg1" />
             <input type="hidden" class="form-control" name="roomimg1ContentType" id="field_roomimg1ContentType"
                 [(ngModel)]="room.roomimg1ContentType" />
         </div>
-        <div class="form-group">
+        <div [hidden]="!(validImage[0] || validImage[1])" class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.roomimg2" for="field_roomimg2">Roomimg 2</label>
             <div>
                 <img [src]="'data:' + room.roomimg2ContentType + ';base64,' + room.roomimg2" style="max-height: 100px;" *ngIf="room.roomimg2" alt="room image"/>
                 <div *ngIf="room.roomimg2" class="form-text text-danger clearfix">
                     <span class="pull-left">{{room.roomimg2ContentType}}, {{byteSize(room.roomimg2)}}</span>
-                    <button type="button" (click)="clearInputImage('roomimg2', 'roomimg2ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                    <button type="button" (click)="clearInputImage('roomimg2', 'roomimg2ContentType', 'fileImage'); removeImage(1)" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" id="file_roomimg2" (change)="setFileData($event, room, 'roomimg2', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                <input type="file" id="file_roomimg2" (change)="setFileData($event, room, 'roomimg2', true); validateImages(1)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
             <input type="hidden" class="form-control" name="roomimg2" id="field_roomimg2"
                 [(ngModel)]="room.roomimg2" />
             <input type="hidden" class="form-control" name="roomimg2ContentType" id="field_roomimg2ContentType"
                 [(ngModel)]="room.roomimg2ContentType" />
         </div>
-        <div class="form-group">
+        <div [hidden]="!(validImage[1] || validImage[2])" class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.roomimg3" for="field_roomimg3">Roomimg 3</label>
             <div>
                 <img [src]="'data:' + room.roomimg3ContentType + ';base64,' + room.roomimg3" style="max-height: 100px;" *ngIf="room.roomimg3" alt="room image"/>
                 <div *ngIf="room.roomimg3" class="form-text text-danger clearfix">
                     <span class="pull-left">{{room.roomimg3ContentType}}, {{byteSize(room.roomimg3)}}</span>
-                    <button type="button" (click)="clearInputImage('roomimg3', 'roomimg3ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                    <button type="button" (click)="clearInputImage('roomimg3', 'roomimg3ContentType', 'fileImage'); removeImage(2)" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" id="file_roomimg3" (change)="setFileData($event, room, 'roomimg3', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                <input type="file" id="file_roomimg3" (change)="setFileData($event, room, 'roomimg3', true); validateImages(2)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
             <input type="hidden" class="form-control" name="roomimg3" id="field_roomimg3"
                 [(ngModel)]="room.roomimg3" />
             <input type="hidden" class="form-control" name="roomimg3ContentType" id="field_roomimg3ContentType"
                 [(ngModel)]="room.roomimg3ContentType" />
         </div>
-        <div class="form-group">
+        <div [hidden]="!(validImage[2] || validImage[3])" class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.roomimg4" for="field_roomimg4">Roomimg 4</label>
             <div>
                 <img [src]="'data:' + room.roomimg4ContentType + ';base64,' + room.roomimg4" style="max-height: 100px;" *ngIf="room.roomimg4" alt="room image"/>
                 <div *ngIf="room.roomimg4" class="form-text text-danger clearfix">
                     <span class="pull-left">{{room.roomimg4ContentType}}, {{byteSize(room.roomimg4)}}</span>
-                    <button type="button" (click)="clearInputImage('roomimg4', 'roomimg4ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                    <button type="button" (click)="clearInputImage('roomimg4', 'roomimg4ContentType', 'fileImage'); removeImage(3)" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" id="file_roomimg4" (change)="setFileData($event, room, 'roomimg4', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                <input type="file" id="file_roomimg4" (change)="setFileData($event, room, 'roomimg4', true); validateImages(3)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
             <input type="hidden" class="form-control" name="roomimg4" id="field_roomimg4"
                 [(ngModel)]="room.roomimg4" />
             <input type="hidden" class="form-control" name="roomimg4ContentType" id="field_roomimg4ContentType"
                 [(ngModel)]="room.roomimg4ContentType" />
         </div>
-        <div class="form-group">
+        <div [hidden]="!(validImage[3] || validImage[4])" class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.room.roomimg5" for="field_roomimg5">Roomimg 5</label>
             <div>
                 <img [src]="'data:' + room.roomimg5ContentType + ';base64,' + room.roomimg5" style="max-height: 100px;" *ngIf="room.roomimg5" alt="room image"/>
                 <div *ngIf="room.roomimg5" class="form-text text-danger clearfix">
                     <span class="pull-left">{{room.roomimg5ContentType}}, {{byteSize(room.roomimg5)}}</span>
-                    <button type="button" (click)="clearInputImage('roomimg5', 'roomimg5ContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                    <button type="button" (click)="clearInputImage('roomimg5', 'roomimg5ContentType', 'fileImage'); removeImage(4)" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" id="file_roomimg5" (change)="setFileData($event, room, 'roomimg5', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                <input type="file" id="file_roomimg5" (change)="setFileData($event, room, 'roomimg5', true); validateImages(4)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
             <input type="hidden" class="form-control" name="roomimg5" id="field_roomimg5"
                 [(ngModel)]="room.roomimg5" />
@@ -128,7 +128,7 @@
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+        <button type="submit" [disabled]="f.form.invalid || isSaving" class="btn btn-primary">
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>
