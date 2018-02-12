@@ -1,0 +1,31 @@
+{
+    "jhipsterApp": {
+        "room" : {
+            "home": {
+                "title": "Rooms",
+                "createLabel": "Dodaj Room",
+                "createOrEditLabel": "Dodaj lub edytuj: Room"
+            },
+            "created": "Utworzono nowy Room z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Room z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Room z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Room {{ id }}?"
+            },
+            "detail": {
+                "title": "Room"
+            },
+            "roomNumber": "Room Number",
+            "numberOfPersons": "Number Of Persons",
+            "price": "Price",
+            "state": "State",
+            "inventory": "Inventory",
+            "roomimg1": "Roomimg 1",
+            "roomimg2": "Roomimg 2",
+            "roomimg3": "Roomimg 3",
+            "roomimg4": "Roomimg 4",
+            "roomimg5": "Roomimg 5",
+            "reservation": "Reservation"
+        }
+    }
+}
