@@ -16,12 +16,17 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="jhipsterApp.reservation.startDate">Start Date</span></th>
-            <th><span jhiTranslate="jhipsterApp.reservation.finishDate">Finish Date</span></th>
-            <th><span jhiTranslate="jhipsterApp.reservation.client">Client</span></th>
-            <th><span jhiTranslate="jhipsterApp.reservation.room">Room</span></th>
-            <th></th>
+                <th><span jhiTranslate="global.field.id">ID</span></th>
+                <th><span jhiTranslate="jhipsterApp.reservation.startDate">Start Date</span></th>
+                <th><span jhiTranslate="jhipsterApp.reservation.finishDate">Finish Date</span></th>
+                <th><span jhiTranslate="jhipsterApp.reservation.client">Client</span></th>
+                <th><span jhiTranslate="jhipsterApp.reservation.room">Room</span></th>
+                <th>
+                    <select class="form-control">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="roomOption.id" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.roomNumber}}</option>
+                    </select>
+                </th>
             </tr>
             </thead>
             <tbody>

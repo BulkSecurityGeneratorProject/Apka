@@ -18,8 +18,8 @@
                 [(ngModel)]="client.name" required pattern="[A-Z, a-z]{1,}" #name="ngModel" (focus)="Typing(0,true)" (blur)="Typing(0,false)" />
 
         <div [hidden]="name.valid || isTyping[0]"
-             class="alert alert-danger">
-            Name is required!
+             class="alert alert-danger" >
+            <span jhiTranslate="jhipsterApp.client.name">Name</span><span jhiTranslate="jhipsterApp.client.required"> is required</span>
         </div>
         </div>
 
@@ -29,7 +29,7 @@
                 [(ngModel)]="client.surname" required pattern="[A-Z, a-z]{1,}" #surname="ngModel" (focus)="Typing(1,true)" (blur)="Typing(1,false)" />
             <div [hidden]="surname.valid || isTyping[1]"
                  class="alert alert-danger">
-                Surname is required!
+                <span jhiTranslate="jhipsterApp.client.surname">Surname</span><span jhiTranslate="jhipsterApp.client.required"> is required</span>
             </div>
         </div>
         <div class="form-group">
@@ -38,7 +38,7 @@
                 [(ngModel)]="client.phoneNumber" required pattern="[0-9]{9}" #phoneNumber="ngModel" (focus)="Typing(2,true)" (blur)="Typing(2,false)" />
             <div [hidden]="phoneNumber.valid || isTyping[2]"
                  class="alert alert-danger">
-                Phone number is invaild!
+                <span jhiTranslate="jhipsterApp.client.phoneNumber">phone Number</span><span jhiTranslate="jhipsterApp.client.invalid"> is invalid</span>
             </div>
         </div>
         <div class="form-group">
@@ -49,7 +49,7 @@
                    (focus)="Typing(3,true)" (blur)="Typing(3,false)" />
             <div [hidden]="emailAdress.valid || isTyping[3]"
                  class="alert alert-danger">
-                Email adress is invalid!
+                <span jhiTranslate="jhipsterApp.client.emailAdress">email</span><span jhiTranslate="jhipsterApp.client.invalid"> is invalid</span>
             </div>
         </div>
 

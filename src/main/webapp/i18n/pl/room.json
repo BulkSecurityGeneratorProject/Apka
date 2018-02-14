@@ -20,6 +20,8 @@
             "numberOfPersons": "Liczba Osób",
             "price": "Cena",
             "state": "Stan",
+            "available": "wolny",
+            "occupied": "zajęty",
             "inventory": "Wyposażenie",
             "images": "Zdjęcia",
             "roomimg1": "Zdjęcie 1",

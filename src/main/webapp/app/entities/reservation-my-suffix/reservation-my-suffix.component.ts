@@ -5,6 +5,9 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { ReservationMySuffix } from './reservation-my-suffix.model';
 import { ReservationMySuffixService } from './reservation-my-suffix.service';
 import { Principal, ResponseWrapper } from '../../shared';
+import { ClientMySuffix, ClientMySuffixService } from '../client-my-suffix';
+import { RoomMySuffix, RoomMySuffixService } from '../room-my-suffix';
+
 
 @Component({
     selector: 'jhi-reservation-my-suffix',
@@ -15,9 +18,14 @@ reservations: ReservationMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    clients: ClientMySuffix[];
+    rooms: RoomMySuffix[];
+
     constructor(
         private reservationService: ReservationMySuffixService,
         private jhiAlertService: JhiAlertService,
+        private clientService: ClientMySuffixService,
+        private roomService: RoomMySuffixService,
         private eventManager: JhiEventManager,
         private principal: Principal
     ) {
@@ -37,6 +45,10 @@ reservations: ReservationMySuffix[];
             this.currentAccount = account;
         });
         this.registerChangeInReservations();
+        this.clientService.query()
+            .subscribe((res: ResponseWrapper) => { this.clients = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.roomService.query()
+            .subscribe((res: ResponseWrapper) => { this.rooms = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     ngOnDestroy() {
@@ -53,4 +65,13 @@ reservations: ReservationMySuffix[];
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
+
+    trackClientById(index: number, item: ClientMySuffix) {
+        return item.id;
+    }
+
+    trackRoomById(index: number, item: RoomMySuffix) {
+        return item.id;
+    }
+
 }

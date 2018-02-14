@@ -33,8 +33,8 @@
                 <td class="centerText">{{room.numberOfPersons}}</td>
                 <td class="centerText"><p *ngIf="room.price">{{room.price}} zł</p></td>
                 <td class="centerText">
-                    <p *ngIf="room.state == true">unavailable</p>
-                    <p *ngIf="room.state == false">available</p>
+                    <p *ngIf="room.state == true" jhiTranslate="jhipsterApp.room.occupied">occupied</p>
+                    <p *ngIf="room.state == false" jhiTranslate="jhipsterApp.room.available">available</p>
                 </td>
                 <td class="centerText">{{room.inventory}}</td>
                 <td class="centerText"><a [routerLink]="['/', { outlets: { popup: 'room-my-suffix/'+ room.id + '/edit/img'} }]">img</a></td>

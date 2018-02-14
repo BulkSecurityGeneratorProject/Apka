@@ -20,6 +20,8 @@
             "numberOfPersons": "Number Of Persons",
             "price": "Price",
             "state": "State",
+            "available": "available",
+            "occupied": "occupied",
             "inventory": "Inventory",
             "images": "Images",
             "roomimg1": "Image 1",
