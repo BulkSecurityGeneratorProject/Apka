@@ -23,6 +23,11 @@ export class RoomMySuffixDialogComponent implements OnInit {
 
     photos: PhotosMySuffix[];
 
+    isTyping = [true, true, true, true];
+    Typing(i,logic){
+        this.isTyping[i] = logic;
+    }
+
     constructor(
         public activeModal: NgbActiveModal,
         private jhiAlertService: JhiAlertService,

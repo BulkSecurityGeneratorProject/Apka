@@ -2,23 +2,23 @@
     "jhipsterApp": {
         "reservation" : {
             "home": {
-                "title": "Reservations",
-                "createLabel": "Dodaj Reservation",
-                "createOrEditLabel": "Dodaj lub edytuj: Reservation"
+                "title": "Rezerwacje",
+                "createLabel": "Dodaj Rezerwacje",
+                "createOrEditLabel": "Dodaj lub edytuj: Rezerwacje"
             },
-            "created": "Utworzono nowy Reservation z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Reservation z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Reservation z identyfikatorem {{ param }}",
+            "created": "Utworzono nowa Rezerwacje z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Rezerwacje z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Rezerwacje z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Reservation {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Rezerwacje{{ id }}?"
             },
             "detail": {
-                "title": "Reservation"
+                "title": "Rezerwacja"
             },
-            "startDate": "Start Date",
-            "finishDate": "Finish Date",
-            "client": "Client",
-            "room": "Room"
+            "startDate": "Data przyjazdu",
+            "finishDate": "Data odjazdu",
+            "client": "Klient",
+            "room": "Pokój"
         }
     }
 }

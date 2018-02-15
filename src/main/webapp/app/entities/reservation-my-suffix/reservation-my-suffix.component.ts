@@ -53,4 +53,18 @@ reservations: ReservationMySuffix[];
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
+
+    convertFromID(tableEntity, resID){
+        for(var i = 0; tableEntity.length > i; i++){
+            if(tableEntity[i].id == resID){
+                if(tableEntity == "this.rooms"){
+                    return tableEntity[i].roomNumber;
+                }
+                else{
+                    return (tableEntity[i].name+" "+tableEntity[i].surname);
+                }
+            }
+        }
+    }
+
 }

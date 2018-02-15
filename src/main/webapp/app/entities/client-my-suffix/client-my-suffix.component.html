@@ -16,21 +16,21 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th><span jhiTranslate="global.field.id">ID</span></th>
-                <th><span jhiTranslate="jhipsterApp.client.name">Name</span></th>
-                <th><span jhiTranslate="jhipsterApp.client.surname">Surname</span></th>
-                <th><span jhiTranslate="jhipsterApp.client.phoneNumber">Phone Number</span></th>
-                <th><span jhiTranslate="jhipsterApp.client.emailAdress">Email Adress</span></th>
+                <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.client.name">Name</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.client.surname">Surname</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.client.phoneNumber">Phone Number</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.client.emailAdress">Email Adress</span></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let client of clients ;trackBy: trackId">
-                <td><a [routerLink]="['../client-my-suffix', client.id ]">{{client.id}}</a></td>
-                <td>{{client.name}}</td>
-                <td>{{client.surname}}</td>
-                <td>{{client.phoneNumber}}</td>
-                <td>{{client.emailAdress}}</td>
+                <td class="centerText"><a [routerLink]="['../client-my-suffix', client.id ]">{{client.id}}</a></td>
+                <td class="centerText">{{client.name}}</td>
+                <td class="centerText">{{client.surname}}</td>
+                <td class="centerText">{{client.phoneNumber}}</td>
+                <td class="centerText">{{client.emailAdress}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
