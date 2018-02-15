@@ -1,0 +1,38 @@
+
+<div *ngIf="contact">
+    <h2><span jhiTranslate="jhipsterApp.contact.detail.title">Contact</span> {{contact.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterApp.contact.localName">Local Name</span></dt>
+        <dd>
+            <span>{{contact.localName}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.contact.phoneNumber">Phone Number</span></dt>
+        <dd>
+            <span>{{contact.phoneNumber}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.contact.emailAdress">Email Adress</span></dt>
+        <dd>
+            <span>{{contact.emailAdress}}</span>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.contact.adress">Adress</span></dt>
+        <dd>
+            <span>{{contact.adress}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'contact-my-suffix/'+ contact.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
