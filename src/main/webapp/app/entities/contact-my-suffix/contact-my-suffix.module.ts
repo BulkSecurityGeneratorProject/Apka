@@ -1,5 +1,11 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, ApplicationRef } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { AgmCoreModule } from '@agm/core';
 
 import { JhipsterSharedModule } from '../../shared';
 import {
@@ -23,7 +29,13 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         JhipsterSharedModule,
-        RouterModule.forChild(ENTITY_STATES)
+        RouterModule.forChild(ENTITY_STATES),
+        BrowserModule,
+        CommonModule,
+         FormsModule,
+         AgmCoreModule.forRoot({
+        apiKey: 'AIzaSyBhWyfqTQDFGWvAlVMrHRfba1FQlz9z754'
+          })
     ],
     declarations: [
         ContactMySuffixComponent,
@@ -43,6 +55,7 @@ const ENTITY_STATES = [
     providers: [
         ContactMySuffixService,
         ContactMySuffixPopupService,
+
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
