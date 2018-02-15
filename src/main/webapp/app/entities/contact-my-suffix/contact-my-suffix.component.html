@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="jhipsterApp.contact.home.title">Contacts</span>
-        <button class="btn btn-primary float-right jh-create-entity create-contact-my-suffix" [routerLink]="['/', { outlets: { popup: ['contact-my-suffix-new'] } }]">
+        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" class="btn btn-primary float-right jh-create-entity create-contact-my-suffix" [routerLink]="['/', { outlets: { popup: ['contact-my-suffix-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="jhipsterApp.contact.home.createLabel">
             Create new Contact

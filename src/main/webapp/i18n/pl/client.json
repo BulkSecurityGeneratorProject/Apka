@@ -2,23 +2,25 @@
     "jhipsterApp": {
         "client" : {
             "home": {
-                "title": "Clients",
-                "createLabel": "Dodaj Client",
-                "createOrEditLabel": "Dodaj lub edytuj: Client"
+                "title": "Klienci",
+                "createLabel": "Dodaj Klienta",
+                "createOrEditLabel": "Dodaj lub edytuj: Klienta"
             },
-            "created": "Utworzono nowy Client z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Client z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Client z identyfikatorem {{ param }}",
+            "created": "Utworzono nowego Klienta z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Klienta z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Klienta z identyfikatorem {{ param }}",
+            "required": " jest wymagane!",
+            "invalid": " jest niepoprawny!",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Client {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Klienta {{ id }}?"
             },
             "detail": {
-                "title": "Client"
+                "title": "Klient"
             },
-            "name": "Name",
-            "surname": "Surname",
-            "phoneNumber": "Phone Number",
-            "emailAdress": "Email Adress",
+            "name": "Imie",
+            "surname": "Nazwisko",
+            "phoneNumber": "Numer telefonu",
+            "emailAdress": "Adres email",
             "reservation": "Reservation"
         }
     }

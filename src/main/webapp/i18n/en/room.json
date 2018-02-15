@@ -3,12 +3,15 @@
         "room" : {
             "home": {
                 "title": "Rooms",
+                "gallery": "This is Gallery of Room: {{ id }}",
                 "createLabel": "Create a new Room",
                 "createOrEditLabel": "Create or edit a Room"
             },
             "created": "A new Room is created with identifier {{ param }}",
             "updated": "A Room is updated with identifier {{ param }}",
             "deleted": "A Room is deleted with identifier {{ param }}",
+            "required": " is required!",
+            "invalid": " is invalid!",
             "delete": {
                 "question": "Are you sure you want to delete Room {{ id }}?"
             },
@@ -19,6 +22,8 @@
             "numberOfPersons": "Number Of Persons",
             "price": "Price",
             "state": "State",
+            "available": "available",
+            "occupied": "occupied",
             "inventory": "Inventory",
             "reservation": "Reservation",
             "photos": "Photos"

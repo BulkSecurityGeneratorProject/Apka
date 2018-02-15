@@ -6,3 +6,5 @@ export * from './room-my-suffix-delete-dialog.component';
 export * from './room-my-suffix-detail.component';
 export * from './room-my-suffix.component';
 export * from './room-my-suffix.route';
+export * from './room-my-suffix-img.component';
+

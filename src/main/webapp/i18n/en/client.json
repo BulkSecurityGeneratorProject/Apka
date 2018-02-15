@@ -9,6 +9,8 @@
             "created": "A new Client is created with identifier {{ param }}",
             "updated": "A Client is updated with identifier {{ param }}",
             "deleted": "A Client is deleted with identifier {{ param }}",
+            "required": " is required!",
+            "invalid": " is invalid!",
             "delete": {
                 "question": "Are you sure you want to delete Client {{ id }}?"
             },

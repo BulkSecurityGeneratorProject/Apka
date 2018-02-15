@@ -11,6 +11,8 @@ import {
     RoomMySuffixPopupComponent,
     RoomMySuffixDeletePopupComponent,
     RoomMySuffixDeleteDialogComponent,
+    RoomMySuffixImgPopupComponent,
+    RoomMySuffixImgComponent,
     roomRoute,
     roomPopupRoute,
 } from './';
@@ -32,6 +34,8 @@ const ENTITY_STATES = [
         RoomMySuffixDeleteDialogComponent,
         RoomMySuffixPopupComponent,
         RoomMySuffixDeletePopupComponent,
+        RoomMySuffixImgPopupComponent,
+        RoomMySuffixImgComponent,
     ],
     entryComponents: [
         RoomMySuffixComponent,
@@ -39,6 +43,8 @@ const ENTITY_STATES = [
         RoomMySuffixPopupComponent,
         RoomMySuffixDeleteDialogComponent,
         RoomMySuffixDeletePopupComponent,
+        RoomMySuffixImgComponent,
+        RoomMySuffixImgPopupComponent,
     ],
     providers: [
         RoomMySuffixService,
