@@ -10,6 +10,8 @@
                 "roomMySuffix": "Room",
                 "reservationMySuffix": "Reservation",
                 "clientMySuffix": "Client",
+                "contactMySuffix": "Contact",
+                "photosMySuffix": "Photos",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

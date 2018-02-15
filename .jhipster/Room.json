@@ -6,6 +6,14 @@
             "relationshipName": "reservation",
             "otherEntityName": "reservation",
             "otherEntityRelationshipName": "room"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "room",
+            "relationshipName": "photos",
+            "otherEntityName": "photos",
+            "otherEntityField": "id",
+            "ownerSide": true
         }
     ],
     "fields": [
@@ -28,31 +36,6 @@
         {
             "fieldName": "inventory",
             "fieldType": "String"
-        },
-        {
-            "fieldName": "roomimg1",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
-            "fieldName": "roomimg2",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
-            "fieldName": "roomimg3",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
-            "fieldName": "roomimg4",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
-        },
-        {
-            "fieldName": "roomimg5",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image"
         }
     ],
     "changelogDate": "20180209092724",

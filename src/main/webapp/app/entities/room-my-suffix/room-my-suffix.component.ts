@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { RoomMySuffix } from './room-my-suffix.model';
 import { RoomMySuffixService } from './room-my-suffix.service';
@@ -18,7 +18,6 @@ rooms: RoomMySuffix[];
     constructor(
         private roomService: RoomMySuffixService,
         private jhiAlertService: JhiAlertService,
-        private dataUtils: JhiDataUtils,
         private eventManager: JhiEventManager,
         private principal: Principal
     ) {
@@ -46,14 +45,6 @@ rooms: RoomMySuffix[];
 
     trackId(index: number, item: RoomMySuffix) {
         return item.id;
-    }
-
-    byteSize(field) {
-        return this.dataUtils.byteSize(field);
-    }
-
-    openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
     }
     registerChangeInRooms() {
         this.eventSubscriber = this.eventManager.subscribe('roomListModification', (response) => this.loadAll());

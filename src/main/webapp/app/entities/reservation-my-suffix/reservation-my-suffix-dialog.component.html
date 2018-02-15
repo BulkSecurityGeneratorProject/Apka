@@ -43,7 +43,7 @@
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.room" for="field_room">Room</label>
             <select class="form-control" id="field_room" name="room" [(ngModel)]="reservation.roomId" (blur)="ValidateFunction(3)" [ngStyle]="{'border-color' : getColor(3)}" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="roomOption.id" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.id}}</option>
+                <option [ngValue]="roomOption.id" *ngFor="let roomOption of rooms; trackBy: trackRoomById"> Room number:{{roomOption.roomNumber}}</option>
             </select>
             <p>{{ infoArray[3] }}</p>
         </div>

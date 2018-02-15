@@ -5,7 +5,6 @@ import { RoomMySuffixComponent } from './room-my-suffix.component';
 import { RoomMySuffixDetailComponent } from './room-my-suffix-detail.component';
 import { RoomMySuffixPopupComponent } from './room-my-suffix-dialog.component';
 import { RoomMySuffixDeletePopupComponent } from './room-my-suffix-delete-dialog.component';
-import { RoomMySuffixImgPopupComponent } from './room-my-suffix-img.component';
 
 export const roomRoute: Routes = [
     {
@@ -44,16 +43,6 @@ export const roomPopupRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             pageTitle: 'jhipsterApp.room.home.title'
-        },
-        canActivate: [UserRouteAccessService],
-        outlet: 'popup'
-    },
-    {
-        path: 'room-my-suffix/:id/edit/img',
-        component: RoomMySuffixImgPopupComponent,
-        data: {
-            authorities: ['ROLE_USER'],
-            pageTitle: 'aplikacjaApp.roomnew.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'
