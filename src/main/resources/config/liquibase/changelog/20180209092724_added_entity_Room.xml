@@ -42,44 +42,20 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="roomimg_1" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="roomimg_1_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="roomimg_2" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="roomimg_2_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="roomimg_3" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="roomimg_3_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="roomimg_4" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="roomimg_4_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="roomimg_5" type="longblob">
-                <constraints nullable="true" />
-            </column>
-            <column name="roomimg_5_content_type" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        
+        <createTable tableName="room_photos">
+            <column name="photos_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="rooms_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
 
+        <addPrimaryKey columnNames="rooms_id, photos_id" tableName="room_photos"/>
+        
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

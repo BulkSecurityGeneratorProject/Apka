@@ -68,7 +68,7 @@ class RoomGatlingTest extends Simulation {
             .exec(http("Create new room")
             .post("/api/rooms")
             .headers(headers_http_authenticated)
-            .body(StringBody("""{"id":null, "roomNumber":"0", "numberOfPersons":"0", "price":"0", "state":null, "inventory":"SAMPLE_TEXT", "roomimg1":null, "roomimg2":null, "roomimg3":null, "roomimg4":null, "roomimg5":null}""")).asJSON
+            .body(StringBody("""{"id":null, "roomNumber":"0", "numberOfPersons":"0", "price":"0", "state":null, "inventory":"SAMPLE_TEXT"}""")).asJSON
             .check(status.is(201))
             .check(headerRegex("Location", "(.*)").saveAs("new_room_url"))).exitHereIfFailed
             .pause(10)

@@ -22,7 +22,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -56,31 +55,6 @@ public class RoomResourceIntTest {
 
     private static final String DEFAULT_INVENTORY = "AAAAAAAAAA";
     private static final String UPDATED_INVENTORY = "BBBBBBBBBB";
-
-    private static final byte[] DEFAULT_ROOMIMG_1 = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ROOMIMG_1 = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ROOMIMG_1_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ROOMIMG_1_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ROOMIMG_2 = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ROOMIMG_2 = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ROOMIMG_2_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ROOMIMG_2_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ROOMIMG_3 = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ROOMIMG_3 = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ROOMIMG_3_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ROOMIMG_3_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ROOMIMG_4 = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ROOMIMG_4 = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ROOMIMG_4_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ROOMIMG_4_CONTENT_TYPE = "image/png";
-
-    private static final byte[] DEFAULT_ROOMIMG_5 = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_ROOMIMG_5 = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_ROOMIMG_5_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_ROOMIMG_5_CONTENT_TYPE = "image/png";
 
     @Autowired
     private RoomRepository roomRepository;
@@ -130,17 +104,7 @@ public class RoomResourceIntTest {
             .numberOfPersons(DEFAULT_NUMBER_OF_PERSONS)
             .price(DEFAULT_PRICE)
             .state(DEFAULT_STATE)
-            .inventory(DEFAULT_INVENTORY)
-            .roomimg1(DEFAULT_ROOMIMG_1)
-            .roomimg1ContentType(DEFAULT_ROOMIMG_1_CONTENT_TYPE)
-            .roomimg2(DEFAULT_ROOMIMG_2)
-            .roomimg2ContentType(DEFAULT_ROOMIMG_2_CONTENT_TYPE)
-            .roomimg3(DEFAULT_ROOMIMG_3)
-            .roomimg3ContentType(DEFAULT_ROOMIMG_3_CONTENT_TYPE)
-            .roomimg4(DEFAULT_ROOMIMG_4)
-            .roomimg4ContentType(DEFAULT_ROOMIMG_4_CONTENT_TYPE)
-            .roomimg5(DEFAULT_ROOMIMG_5)
-            .roomimg5ContentType(DEFAULT_ROOMIMG_5_CONTENT_TYPE);
+            .inventory(DEFAULT_INVENTORY);
         return room;
     }
 
@@ -170,16 +134,6 @@ public class RoomResourceIntTest {
         assertThat(testRoom.getPrice()).isEqualTo(DEFAULT_PRICE);
         assertThat(testRoom.isState()).isEqualTo(DEFAULT_STATE);
         assertThat(testRoom.getInventory()).isEqualTo(DEFAULT_INVENTORY);
-        assertThat(testRoom.getRoomimg1()).isEqualTo(DEFAULT_ROOMIMG_1);
-        assertThat(testRoom.getRoomimg1ContentType()).isEqualTo(DEFAULT_ROOMIMG_1_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg2()).isEqualTo(DEFAULT_ROOMIMG_2);
-        assertThat(testRoom.getRoomimg2ContentType()).isEqualTo(DEFAULT_ROOMIMG_2_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg3()).isEqualTo(DEFAULT_ROOMIMG_3);
-        assertThat(testRoom.getRoomimg3ContentType()).isEqualTo(DEFAULT_ROOMIMG_3_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg4()).isEqualTo(DEFAULT_ROOMIMG_4);
-        assertThat(testRoom.getRoomimg4ContentType()).isEqualTo(DEFAULT_ROOMIMG_4_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg5()).isEqualTo(DEFAULT_ROOMIMG_5);
-        assertThat(testRoom.getRoomimg5ContentType()).isEqualTo(DEFAULT_ROOMIMG_5_CONTENT_TYPE);
     }
 
     @Test
@@ -217,17 +171,7 @@ public class RoomResourceIntTest {
             .andExpect(jsonPath("$.[*].numberOfPersons").value(hasItem(DEFAULT_NUMBER_OF_PERSONS)))
             .andExpect(jsonPath("$.[*].price").value(hasItem(DEFAULT_PRICE)))
             .andExpect(jsonPath("$.[*].state").value(hasItem(DEFAULT_STATE.booleanValue())))
-            .andExpect(jsonPath("$.[*].inventory").value(hasItem(DEFAULT_INVENTORY.toString())))
-            .andExpect(jsonPath("$.[*].roomimg1ContentType").value(hasItem(DEFAULT_ROOMIMG_1_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].roomimg1").value(hasItem(Base64Utils.encodeToString(DEFAULT_ROOMIMG_1))))
-            .andExpect(jsonPath("$.[*].roomimg2ContentType").value(hasItem(DEFAULT_ROOMIMG_2_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].roomimg2").value(hasItem(Base64Utils.encodeToString(DEFAULT_ROOMIMG_2))))
-            .andExpect(jsonPath("$.[*].roomimg3ContentType").value(hasItem(DEFAULT_ROOMIMG_3_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].roomimg3").value(hasItem(Base64Utils.encodeToString(DEFAULT_ROOMIMG_3))))
-            .andExpect(jsonPath("$.[*].roomimg4ContentType").value(hasItem(DEFAULT_ROOMIMG_4_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].roomimg4").value(hasItem(Base64Utils.encodeToString(DEFAULT_ROOMIMG_4))))
-            .andExpect(jsonPath("$.[*].roomimg5ContentType").value(hasItem(DEFAULT_ROOMIMG_5_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].roomimg5").value(hasItem(Base64Utils.encodeToString(DEFAULT_ROOMIMG_5))));
+            .andExpect(jsonPath("$.[*].inventory").value(hasItem(DEFAULT_INVENTORY.toString())));
     }
 
     @Test
@@ -245,17 +189,7 @@ public class RoomResourceIntTest {
             .andExpect(jsonPath("$.numberOfPersons").value(DEFAULT_NUMBER_OF_PERSONS))
             .andExpect(jsonPath("$.price").value(DEFAULT_PRICE))
             .andExpect(jsonPath("$.state").value(DEFAULT_STATE.booleanValue()))
-            .andExpect(jsonPath("$.inventory").value(DEFAULT_INVENTORY.toString()))
-            .andExpect(jsonPath("$.roomimg1ContentType").value(DEFAULT_ROOMIMG_1_CONTENT_TYPE))
-            .andExpect(jsonPath("$.roomimg1").value(Base64Utils.encodeToString(DEFAULT_ROOMIMG_1)))
-            .andExpect(jsonPath("$.roomimg2ContentType").value(DEFAULT_ROOMIMG_2_CONTENT_TYPE))
-            .andExpect(jsonPath("$.roomimg2").value(Base64Utils.encodeToString(DEFAULT_ROOMIMG_2)))
-            .andExpect(jsonPath("$.roomimg3ContentType").value(DEFAULT_ROOMIMG_3_CONTENT_TYPE))
-            .andExpect(jsonPath("$.roomimg3").value(Base64Utils.encodeToString(DEFAULT_ROOMIMG_3)))
-            .andExpect(jsonPath("$.roomimg4ContentType").value(DEFAULT_ROOMIMG_4_CONTENT_TYPE))
-            .andExpect(jsonPath("$.roomimg4").value(Base64Utils.encodeToString(DEFAULT_ROOMIMG_4)))
-            .andExpect(jsonPath("$.roomimg5ContentType").value(DEFAULT_ROOMIMG_5_CONTENT_TYPE))
-            .andExpect(jsonPath("$.roomimg5").value(Base64Utils.encodeToString(DEFAULT_ROOMIMG_5)));
+            .andExpect(jsonPath("$.inventory").value(DEFAULT_INVENTORY.toString()));
     }
 
     @Test
@@ -282,17 +216,7 @@ public class RoomResourceIntTest {
             .numberOfPersons(UPDATED_NUMBER_OF_PERSONS)
             .price(UPDATED_PRICE)
             .state(UPDATED_STATE)
-            .inventory(UPDATED_INVENTORY)
-            .roomimg1(UPDATED_ROOMIMG_1)
-            .roomimg1ContentType(UPDATED_ROOMIMG_1_CONTENT_TYPE)
-            .roomimg2(UPDATED_ROOMIMG_2)
-            .roomimg2ContentType(UPDATED_ROOMIMG_2_CONTENT_TYPE)
-            .roomimg3(UPDATED_ROOMIMG_3)
-            .roomimg3ContentType(UPDATED_ROOMIMG_3_CONTENT_TYPE)
-            .roomimg4(UPDATED_ROOMIMG_4)
-            .roomimg4ContentType(UPDATED_ROOMIMG_4_CONTENT_TYPE)
-            .roomimg5(UPDATED_ROOMIMG_5)
-            .roomimg5ContentType(UPDATED_ROOMIMG_5_CONTENT_TYPE);
+            .inventory(UPDATED_INVENTORY);
         RoomDTO roomDTO = roomMapper.toDto(updatedRoom);
 
         restRoomMockMvc.perform(put("/api/rooms")
@@ -309,16 +233,6 @@ public class RoomResourceIntTest {
         assertThat(testRoom.getPrice()).isEqualTo(UPDATED_PRICE);
         assertThat(testRoom.isState()).isEqualTo(UPDATED_STATE);
         assertThat(testRoom.getInventory()).isEqualTo(UPDATED_INVENTORY);
-        assertThat(testRoom.getRoomimg1()).isEqualTo(UPDATED_ROOMIMG_1);
-        assertThat(testRoom.getRoomimg1ContentType()).isEqualTo(UPDATED_ROOMIMG_1_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg2()).isEqualTo(UPDATED_ROOMIMG_2);
-        assertThat(testRoom.getRoomimg2ContentType()).isEqualTo(UPDATED_ROOMIMG_2_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg3()).isEqualTo(UPDATED_ROOMIMG_3);
-        assertThat(testRoom.getRoomimg3ContentType()).isEqualTo(UPDATED_ROOMIMG_3_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg4()).isEqualTo(UPDATED_ROOMIMG_4);
-        assertThat(testRoom.getRoomimg4ContentType()).isEqualTo(UPDATED_ROOMIMG_4_CONTENT_TYPE);
-        assertThat(testRoom.getRoomimg5()).isEqualTo(UPDATED_ROOMIMG_5);
-        assertThat(testRoom.getRoomimg5ContentType()).isEqualTo(UPDATED_ROOMIMG_5_CONTENT_TYPE);
     }
 
     @Test

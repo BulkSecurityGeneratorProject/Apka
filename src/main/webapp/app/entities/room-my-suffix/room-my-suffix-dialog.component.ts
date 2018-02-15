@@ -1,14 +1,16 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 
 import { RoomMySuffix } from './room-my-suffix.model';
 import { RoomMySuffixPopupService } from './room-my-suffix-popup.service';
 import { RoomMySuffixService } from './room-my-suffix.service';
+import { PhotosMySuffix, PhotosMySuffixService } from '../photos-my-suffix';
+import { ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-room-my-suffix-dialog',
@@ -18,42 +20,22 @@ export class RoomMySuffixDialogComponent implements OnInit {
 
     room: RoomMySuffix;
     isSaving: boolean;
-    validImage = [ 0, 0, 0, 0, 0];
+
+    photos: PhotosMySuffix[];
 
     constructor(
         public activeModal: NgbActiveModal,
-        private dataUtils: JhiDataUtils,
+        private jhiAlertService: JhiAlertService,
         private roomService: RoomMySuffixService,
-        private elementRef: ElementRef,
+        private photosService: PhotosMySuffixService,
         private eventManager: JhiEventManager
     ) {
     }
 
-    validateImages(i){
-        this.validImage[i] = 1;
-    }
-    removeImage(i){
-        this.validImage[i] = 0;
-    }
-
     ngOnInit() {
         this.isSaving = false;
-    }
-
-    byteSize(field) {
-        return this.dataUtils.byteSize(field);
-    }
-
-    openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
-    }
-
-    setFileData(event, entity, field, isImage) {
-        this.dataUtils.setFileData(event, entity, field, isImage);
-    }
-
-    clearInputImage(field: string, fieldContentType: string, idInput: string) {
-        this.dataUtils.clearInputImage(this.room, this.elementRef, field, fieldContentType, idInput);
+        this.photosService.query()
+            .subscribe((res: ResponseWrapper) => { this.photos = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     clear() {
@@ -84,6 +66,25 @@ export class RoomMySuffixDialogComponent implements OnInit {
 
     private onSaveError() {
         this.isSaving = false;
+    }
+
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
+    }
+
+    trackPhotosById(index: number, item: PhotosMySuffix) {
+        return item.id;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

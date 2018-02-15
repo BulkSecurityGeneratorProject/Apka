@@ -1,13 +1,11 @@
 import { browser, element, by } from 'protractor';
 import { NavBarPage } from './../page-objects/jhi-page-objects';
-import * as path from 'path';
+
 describe('Room e2e test', () => {
 
     let navBarPage: NavBarPage;
     let roomDialogPage: RoomDialogPage;
     let roomComponentsPage: RoomComponentsPage;
-    const fileToUpload = '../../../../main/webapp/content/images/logo-jhipster.png';
-    const absolutePath = path.resolve(__dirname, fileToUpload);
 
     beforeAll(() => {
         browser.get('/');
@@ -52,11 +50,7 @@ describe('Room e2e test', () => {
         });
         roomDialogPage.setInventoryInput('inventory');
         expect(roomDialogPage.getInventoryInput()).toMatch('inventory');
-        roomDialogPage.setRoomimg1Input(absolutePath);
-        roomDialogPage.setRoomimg2Input(absolutePath);
-        roomDialogPage.setRoomimg3Input(absolutePath);
-        roomDialogPage.setRoomimg4Input(absolutePath);
-        roomDialogPage.setRoomimg5Input(absolutePath);
+        // roomDialogPage.photosSelectLastOption();
         roomDialogPage.save();
         expect(roomDialogPage.getSaveButton().isPresent()).toBeFalsy();
     });
@@ -88,11 +82,7 @@ export class RoomDialogPage {
     priceInput = element(by.css('input#field_price'));
     stateInput = element(by.css('input#field_state'));
     inventoryInput = element(by.css('input#field_inventory'));
-    roomimg1Input = element(by.css('input#file_roomimg1'));
-    roomimg2Input = element(by.css('input#file_roomimg2'));
-    roomimg3Input = element(by.css('input#file_roomimg3'));
-    roomimg4Input = element(by.css('input#file_roomimg4'));
-    roomimg5Input = element(by.css('input#file_roomimg5'));
+    photosSelect = element(by.css('select#field_photos'));
 
     getModalTitle() {
         return this.modalTitle.getAttribute('jhiTranslate');
@@ -133,44 +123,20 @@ export class RoomDialogPage {
         return this.inventoryInput.getAttribute('value');
     }
 
-    setRoomimg1Input = function(roomimg1) {
-        this.roomimg1Input.sendKeys(roomimg1);
+    photosSelectLastOption = function() {
+        this.photosSelect.all(by.tagName('option')).last().click();
     }
 
-    getRoomimg1Input = function() {
-        return this.roomimg1Input.getAttribute('value');
+    photosSelectOption = function(option) {
+        this.photosSelect.sendKeys(option);
     }
 
-    setRoomimg2Input = function(roomimg2) {
-        this.roomimg2Input.sendKeys(roomimg2);
+    getPhotosSelect = function() {
+        return this.photosSelect;
     }
 
-    getRoomimg2Input = function() {
-        return this.roomimg2Input.getAttribute('value');
-    }
-
-    setRoomimg3Input = function(roomimg3) {
-        this.roomimg3Input.sendKeys(roomimg3);
-    }
-
-    getRoomimg3Input = function() {
-        return this.roomimg3Input.getAttribute('value');
-    }
-
-    setRoomimg4Input = function(roomimg4) {
-        this.roomimg4Input.sendKeys(roomimg4);
-    }
-
-    getRoomimg4Input = function() {
-        return this.roomimg4Input.getAttribute('value');
-    }
-
-    setRoomimg5Input = function(roomimg5) {
-        this.roomimg5Input.sendKeys(roomimg5);
-    }
-
-    getRoomimg5Input = function() {
-        return this.roomimg5Input.getAttribute('value');
+    getPhotosSelectedOption = function() {
+        return this.photosSelect.element(by.css('option:checked')).getText();
     }
 
     save() {

@@ -8,7 +8,10 @@
     <include file="config/liquibase/changelog/20180209092724_added_entity_Room.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180209092725_added_entity_Reservation.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20180209092726_added_entity_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180215081526_added_entity_Contact.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180215081527_added_entity_Photos.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20180209092725_added_entity_constraints_Reservation.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20180209092724_added_entity_constraints_Room.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

@@ -8,6 +8,7 @@ import { JhipsterTestModule } from '../../../test.module';
 import { RoomMySuffixDialogComponent } from '../../../../../../main/webapp/app/entities/room-my-suffix/room-my-suffix-dialog.component';
 import { RoomMySuffixService } from '../../../../../../main/webapp/app/entities/room-my-suffix/room-my-suffix.service';
 import { RoomMySuffix } from '../../../../../../main/webapp/app/entities/room-my-suffix/room-my-suffix.model';
+import { PhotosMySuffixService } from '../../../../../../main/webapp/app/entities/photos-my-suffix';
 
 describe('Component Tests', () => {
 
@@ -23,6 +24,7 @@ describe('Component Tests', () => {
                 imports: [JhipsterTestModule],
                 declarations: [RoomMySuffixDialogComponent],
                 providers: [
+                    PhotosMySuffixService,
                     RoomMySuffixService
                 ]
             })

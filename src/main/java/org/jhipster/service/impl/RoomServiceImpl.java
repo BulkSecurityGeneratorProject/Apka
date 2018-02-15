@@ -55,7 +55,7 @@ public class RoomServiceImpl implements RoomService {
     @Transactional(readOnly = true)
     public List<RoomDTO> findAll() {
         log.debug("Request to get all Rooms");
-        return roomRepository.findAll().stream()
+        return roomRepository.findAllWithEagerRelationships().stream()
             .map(roomMapper::toDto)
             .collect(Collectors.toCollection(LinkedList::new));
     }
@@ -70,7 +70,7 @@ public class RoomServiceImpl implements RoomService {
     @Transactional(readOnly = true)
     public RoomDTO findOne(Long id) {
         log.debug("Request to get Room : {}", id);
-        Room room = roomRepository.findOne(id);
+        Room room = roomRepository.findOneWithEagerRelationships(id);
         return roomMapper.toDto(room);
     }
 

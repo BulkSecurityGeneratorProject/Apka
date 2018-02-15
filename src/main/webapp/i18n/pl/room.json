@@ -2,32 +2,26 @@
     "jhipsterApp": {
         "room" : {
             "home": {
-                "title": "Pokoje",
-                "gallery": "To jest Galeria Pokoju z ID: {{ id }}",
-                "createLabel": "Dodaj Pokój",
-                "createOrEditLabel": "Dodaj lub edytuj: Pokój"
+                "title": "Rooms",
+                "createLabel": "Dodaj Room",
+                "createOrEditLabel": "Dodaj lub edytuj: Room"
             },
-            "created": "Utworzono nowy Pokój z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Pokój z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Pokój z identyfikatorem {{ param }}",
+            "created": "Utworzono nowy Room z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Room z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Room z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Pokój {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Room {{ id }}?"
             },
             "detail": {
-                "title": "Pokój"
+                "title": "Room"
             },
-            "roomNumber": "Numer Pokoju",
-            "numberOfPersons": "Liczba Osób",
-            "price": "Cena",
-            "state": "Stan",
-            "inventory": "Wyposażenie",
-            "images": "Zdjęcia",
-            "roomimg1": "Zdjęcie 1",
-            "roomimg2": "Zdjęcie 2",
-            "roomimg3": "Zdjęcie 3",
-            "roomimg4": "Zdjęcie 4",
-            "roomimg5": "Zdjęcie 5",
-            "reservation": "Reservation"
+            "roomNumber": "Room Number",
+            "numberOfPersons": "Number Of Persons",
+            "price": "Price",
+            "state": "State",
+            "inventory": "Inventory",
+            "reservation": "Reservation",
+            "photos": "Photos"
         }
     }
 }

@@ -40,45 +40,17 @@ public class Room implements Serializable {
     @Column(name = "inventory")
     private String inventory;
 
-    @Lob
-    @Column(name = "roomimg_1")
-    private byte[] roomimg1;
-
-    @Column(name = "roomimg_1_content_type")
-    private String roomimg1ContentType;
-
-    @Lob
-    @Column(name = "roomimg_2")
-    private byte[] roomimg2;
-
-    @Column(name = "roomimg_2_content_type")
-    private String roomimg2ContentType;
-
-    @Lob
-    @Column(name = "roomimg_3")
-    private byte[] roomimg3;
-
-    @Column(name = "roomimg_3_content_type")
-    private String roomimg3ContentType;
-
-    @Lob
-    @Column(name = "roomimg_4")
-    private byte[] roomimg4;
-
-    @Column(name = "roomimg_4_content_type")
-    private String roomimg4ContentType;
-
-    @Lob
-    @Column(name = "roomimg_5")
-    private byte[] roomimg5;
-
-    @Column(name = "roomimg_5_content_type")
-    private String roomimg5ContentType;
-
     @OneToMany(mappedBy = "room")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Reservation> reservations = new HashSet<>();
+
+    @ManyToMany
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @JoinTable(name = "room_photos",
+               joinColumns = @JoinColumn(name="rooms_id", referencedColumnName="id"),
+               inverseJoinColumns = @JoinColumn(name="photos_id", referencedColumnName="id"))
+    private Set<Photos> photos = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -154,136 +126,6 @@ public class Room implements Serializable {
         this.inventory = inventory;
     }
 
-    public byte[] getRoomimg1() {
-        return roomimg1;
-    }
-
-    public Room roomimg1(byte[] roomimg1) {
-        this.roomimg1 = roomimg1;
-        return this;
-    }
-
-    public void setRoomimg1(byte[] roomimg1) {
-        this.roomimg1 = roomimg1;
-    }
-
-    public String getRoomimg1ContentType() {
-        return roomimg1ContentType;
-    }
-
-    public Room roomimg1ContentType(String roomimg1ContentType) {
-        this.roomimg1ContentType = roomimg1ContentType;
-        return this;
-    }
-
-    public void setRoomimg1ContentType(String roomimg1ContentType) {
-        this.roomimg1ContentType = roomimg1ContentType;
-    }
-
-    public byte[] getRoomimg2() {
-        return roomimg2;
-    }
-
-    public Room roomimg2(byte[] roomimg2) {
-        this.roomimg2 = roomimg2;
-        return this;
-    }
-
-    public void setRoomimg2(byte[] roomimg2) {
-        this.roomimg2 = roomimg2;
-    }
-
-    public String getRoomimg2ContentType() {
-        return roomimg2ContentType;
-    }
-
-    public Room roomimg2ContentType(String roomimg2ContentType) {
-        this.roomimg2ContentType = roomimg2ContentType;
-        return this;
-    }
-
-    public void setRoomimg2ContentType(String roomimg2ContentType) {
-        this.roomimg2ContentType = roomimg2ContentType;
-    }
-
-    public byte[] getRoomimg3() {
-        return roomimg3;
-    }
-
-    public Room roomimg3(byte[] roomimg3) {
-        this.roomimg3 = roomimg3;
-        return this;
-    }
-
-    public void setRoomimg3(byte[] roomimg3) {
-        this.roomimg3 = roomimg3;
-    }
-
-    public String getRoomimg3ContentType() {
-        return roomimg3ContentType;
-    }
-
-    public Room roomimg3ContentType(String roomimg3ContentType) {
-        this.roomimg3ContentType = roomimg3ContentType;
-        return this;
-    }
-
-    public void setRoomimg3ContentType(String roomimg3ContentType) {
-        this.roomimg3ContentType = roomimg3ContentType;
-    }
-
-    public byte[] getRoomimg4() {
-        return roomimg4;
-    }
-
-    public Room roomimg4(byte[] roomimg4) {
-        this.roomimg4 = roomimg4;
-        return this;
-    }
-
-    public void setRoomimg4(byte[] roomimg4) {
-        this.roomimg4 = roomimg4;
-    }
-
-    public String getRoomimg4ContentType() {
-        return roomimg4ContentType;
-    }
-
-    public Room roomimg4ContentType(String roomimg4ContentType) {
-        this.roomimg4ContentType = roomimg4ContentType;
-        return this;
-    }
-
-    public void setRoomimg4ContentType(String roomimg4ContentType) {
-        this.roomimg4ContentType = roomimg4ContentType;
-    }
-
-    public byte[] getRoomimg5() {
-        return roomimg5;
-    }
-
-    public Room roomimg5(byte[] roomimg5) {
-        this.roomimg5 = roomimg5;
-        return this;
-    }
-
-    public void setRoomimg5(byte[] roomimg5) {
-        this.roomimg5 = roomimg5;
-    }
-
-    public String getRoomimg5ContentType() {
-        return roomimg5ContentType;
-    }
-
-    public Room roomimg5ContentType(String roomimg5ContentType) {
-        this.roomimg5ContentType = roomimg5ContentType;
-        return this;
-    }
-
-    public void setRoomimg5ContentType(String roomimg5ContentType) {
-        this.roomimg5ContentType = roomimg5ContentType;
-    }
-
     public Set<Reservation> getReservations() {
         return reservations;
     }
@@ -307,6 +149,31 @@ public class Room implements Serializable {
 
     public void setReservations(Set<Reservation> reservations) {
         this.reservations = reservations;
+    }
+
+    public Set<Photos> getPhotos() {
+        return photos;
+    }
+
+    public Room photos(Set<Photos> photos) {
+        this.photos = photos;
+        return this;
+    }
+
+    public Room addPhotos(Photos photos) {
+        this.photos.add(photos);
+        photos.getRooms().add(this);
+        return this;
+    }
+
+    public Room removePhotos(Photos photos) {
+        this.photos.remove(photos);
+        photos.getRooms().remove(this);
+        return this;
+    }
+
+    public void setPhotos(Set<Photos> photos) {
+        this.photos = photos;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
@@ -339,16 +206,6 @@ public class Room implements Serializable {
             ", price=" + getPrice() +
             ", state='" + isState() + "'" +
             ", inventory='" + getInventory() + "'" +
-            ", roomimg1='" + getRoomimg1() + "'" +
-            ", roomimg1ContentType='" + getRoomimg1ContentType() + "'" +
-            ", roomimg2='" + getRoomimg2() + "'" +
-            ", roomimg2ContentType='" + getRoomimg2ContentType() + "'" +
-            ", roomimg3='" + getRoomimg3() + "'" +
-            ", roomimg3ContentType='" + getRoomimg3ContentType() + "'" +
-            ", roomimg4='" + getRoomimg4() + "'" +
-            ", roomimg4ContentType='" + getRoomimg4ContentType() + "'" +
-            ", roomimg5='" + getRoomimg5() + "'" +
-            ", roomimg5ContentType='" + getRoomimg5ContentType() + "'" +
             "}";
     }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
+import { JhiEventManager } from 'ng-jhipster';
 
 import { RoomMySuffix } from './room-my-suffix.model';
 import { RoomMySuffixService } from './room-my-suffix.service';
@@ -18,7 +18,6 @@ export class RoomMySuffixDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
-        private dataUtils: JhiDataUtils,
         private roomService: RoomMySuffixService,
         private route: ActivatedRoute
     ) {
@@ -35,13 +34,6 @@ export class RoomMySuffixDetailComponent implements OnInit, OnDestroy {
         this.roomService.find(id).subscribe((room) => {
             this.room = room;
         });
-    }
-    byteSize(field) {
-        return this.dataUtils.byteSize(field);
-    }
-
-    openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();
