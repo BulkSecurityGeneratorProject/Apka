@@ -41,6 +41,7 @@
                 <td>
                     <span *ngFor="let photos of room.photos; let last = last">
                             <a class="form-control-static" [routerLink]="['../photos-my-suffix', photos?.id ]">{{photos.id}}</a>{{last ? '' : ', '}}
+                            <img class="imgResizeSmall"  [src]="'data:' + photos.roomimg1ContentType + ';base64,' + photos.roomimg1" alt="room image"/>
                         </span>
                 </td>
                 <td class="text-right">

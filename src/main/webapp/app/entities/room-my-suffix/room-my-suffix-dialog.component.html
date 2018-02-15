@@ -53,7 +53,8 @@
         <div class="form-group">
             <label jhiTranslate="jhipsterApp.room.photos" for="field_photos">Photos</label>
             <select class="form-control" id="field_photos" multiple name="photos" [(ngModel)]="room.photos">
-                <option [ngValue]="getSelected(room.photos, photosOption)" *ngFor="let photosOption of photos; trackBy: trackPhotosById">{{photosOption.id}}</option>
+                <option [ngValue]="getSelected(room.photos, photosOption)" *ngFor="let photosOption of photos; trackBy: trackPhotosById">
+                    {{photosOption.id}}</option>
             </select>
         </div>
     </div>
