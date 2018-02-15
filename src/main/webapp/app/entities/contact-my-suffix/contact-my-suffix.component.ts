@@ -8,12 +8,18 @@ import { Principal, ResponseWrapper } from '../../shared';
 
 @Component({
     selector: 'jhi-contact-my-suffix',
-    templateUrl: './contact-my-suffix.component.html'
+    templateUrl: './contact-my-suffix.component.html',
+styleUrls:['contact.scss']
+
 })
 export class ContactMySuffixComponent implements OnInit, OnDestroy {
 contacts: ContactMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
+
+     title: string = 'My first AGM project';
+  lat: number = 53.663269;
+  lng: number = 22.943042;
 
     constructor(
         private contactService: ContactMySuffixService,
