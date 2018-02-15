@@ -1,0 +1,31 @@
+
+<div *ngIf="photos">
+    <h2><span jhiTranslate="jhipsterApp.photos.detail.title">Photos</span> {{photos.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterApp.photos.roomimg1">Roomimg 1</span></dt>
+        <dd>
+            <div *ngIf="photos.roomimg1">
+                <a (click)="openFile(photos.roomimg1ContentType, photos.roomimg1)">
+                    <img [src]="'data:' + photos.roomimg1ContentType + ';base64,' + photos.roomimg1" style="max-width: 100%;" alt="photos image"/>
+                </a>
+                {{photos.roomimg1ContentType}}, {{byteSize(photos.roomimg1)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'photos-my-suffix/'+ photos.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

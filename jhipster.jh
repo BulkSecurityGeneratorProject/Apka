@@ -1,0 +1,33 @@
+// JDL definition for application 'jhipster' generated with command 'jhipster export-jdl'
+
+entity Room (room) {
+  roomNumber Integer,
+  numberOfPersons Integer,
+  price Integer,
+  state Boolean,
+  inventory String,
+  roomimg1 ImageBlob,
+  roomimg2 ImageBlob,
+  roomimg3 ImageBlob,
+  roomimg4 ImageBlob,
+  roomimg5 ImageBlob
+}
+entity Reservation (reservation) {
+  startDate Instant,
+  finishDate Instant
+}
+entity Client (client) {
+  name String,
+  surname String,
+  phoneNumber Integer,
+  emailAdress String
+}
+
+relationship OneToMany {
+  Client{reservation} to Reservation{client},
+  Room{reservation} to Reservation{room}
+}
+
+dto Room, Reservation, Client with mapstruct
+service Room, Reservation, Client with serviceImpl
+angularSuffix Room, Reservation, Client with mySuffix

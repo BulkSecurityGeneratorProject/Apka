@@ -1,0 +1,29 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "localName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phoneNumber",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "emailAdress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "adress",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180215081526",
+    "entityTableName": "contact",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "angularJSSuffix": "mySuffix"
+}

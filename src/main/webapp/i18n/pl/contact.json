@@ -1,0 +1,24 @@
+{
+    "jhipsterApp": {
+        "contact" : {
+            "home": {
+                "title": "Contacts",
+                "createLabel": "Dodaj Contact",
+                "createOrEditLabel": "Dodaj lub edytuj: Contact"
+            },
+            "created": "Utworzono nowy Contact z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Contact z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Contact z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Contact {{ id }}?"
+            },
+            "detail": {
+                "title": "Contact"
+            },
+            "localName": "Local Name",
+            "phoneNumber": "Phone Number",
+            "emailAdress": "Email Adress",
+            "adress": "Adress"
+        }
+    }
+}

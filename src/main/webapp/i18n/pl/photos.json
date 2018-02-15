@@ -1,0 +1,22 @@
+{
+    "jhipsterApp": {
+        "photos" : {
+            "home": {
+                "title": "Photos",
+                "createLabel": "Dodaj Photos",
+                "createOrEditLabel": "Dodaj lub edytuj: Photos"
+            },
+            "created": "Utworzono nowy Photos z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Photos z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Photos z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Photos {{ id }}?"
+            },
+            "detail": {
+                "title": "Photos"
+            },
+            "roomimg1": "Roomimg 1",
+            "room": "Room"
+        }
+    }
+}
