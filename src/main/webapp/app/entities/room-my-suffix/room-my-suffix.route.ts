@@ -54,7 +54,7 @@ export const roomPopupRoute: Routes = [
         component: RoomMySuffixImgPopupComponent,
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'aplikacjaApp.roomnew.home.title'
+            pageTitle: 'jhipsterApp.roomnew.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

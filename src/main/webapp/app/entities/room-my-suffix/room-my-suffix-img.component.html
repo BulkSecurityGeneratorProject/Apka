@@ -6,30 +6,14 @@
     </div>
     <br/>
     <div id="testowy" [@imgAnimation]="state" >
-        <div id="photoContainer" >
-            <p>TODO IMG</p>
-<!--            <a *ngIf="currentImg == 0" (click)="openFile(room.roomimg1ContentType, room.roomimg1)" >
-                <img class="imgResize"  [src]="'data:' + room.roomimg1ContentType + ';base64,' + room.roomimg1" style="max-width: 100%;" alt="room image"/>
-            </a>
-            <a *ngIf="currentImg == 1" (click)="openFile(room.roomimg2ContentType, room.roomimg2)">
-                <img class="imgResize" [src]="'data:' + room.roomimg2ContentType + ';base64,' + room.roomimg2" style="max-width: 100%;" alt="room image"/>
-            </a>
-            <a *ngIf="currentImg == 2" (click)="openFile(room.roomimg3ContentType, room.roomimg3)">
-                <img class="imgResize" [src]="'data:' + room.roomimg3ContentType + ';base64,' + room.roomimg3" style="max-width: 100%;" alt="room image"/>
-            </a>
-            <a *ngIf="currentImg == 3" (click)="openFile(room.roomimg4ContentType, room.roomimg4)">
-                <img class="imgResize" [src]="'data:' + room.roomimg4ContentType + ';base64,' + room.roomimg4" style="max-width: 100%;" alt="room image"/>
-            </a>
-            <a *ngIf="currentImg == 4" (click)="openFile(room.roomimg5ContentType, room.roomimg5)">
-                <img class="imgResize" [src]="'data:' + room.roomimg5ContentType + ';base64,' + room.roomimg5" style="max-width: 100%;" alt="room image"/>
-            </a>
--->        </div>
+        <div id="photoContainer" *ngIf="imgAmount">
+            <img class="imgResize"  [src]="'data:' + room.photos[currentImg].roomimg1ContentType + ';base64,' + room.photos[currentImg].roomimg1" alt="room image"/>
+         </div>
         <div id="controlButtons" [@imgAnimation]="state" (@imgAnimation.done)="test($event)">
-            <input type="button" (click)="animateTransition('previous')" [disabled]="currentImg == 0" class="pad" value="Previous" />
-            <input type="button"  (click)="animateTransition('next')" [disabled]="currentImg == imgAmount-1" class="pad odstep" value="Next" />
+            <input type="button" jhiTranslate="jhipsterApp.room.previous" (click)="animateTransition('previous')" [disabled]="currentImg == 0" class="pad" value="Previous" />
+            <input type="button" jhiTranslate="jhipsterApp.room.next"  (click)="animateTransition('next')" [disabled]="currentImg == imgAmount-1" class="pad odstep" value="Next" />
         </div>
     </div>
     <div class="modal-footer">
-
     </div>
 </form>

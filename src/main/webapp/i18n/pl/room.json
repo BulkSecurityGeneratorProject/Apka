@@ -25,8 +25,10 @@
             "available": "wolny",
             "occupied": "zajęty",
             "inventory": "Wyposażenie",
+            "next": "Następny",
+            "previous": "Poprzedni",
             "reservation": "Reservation",
-            "photos": "Photos"
+            "photos": "Zdjęcia"
         }
     }
 }

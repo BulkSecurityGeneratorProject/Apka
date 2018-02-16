@@ -52,13 +52,14 @@ export class RoomMySuffixImgComponent {
 
     countImg(){
 /* Write new img count*/
+        this.imgAmount = this.room.photos.length;
     }
 
     test(event){
         this.animationEvent = event.toState;
         if(event.toState == 'active'){
             if(this.direction == 'next'){
-                if(this.currentImg < 4){
+                if(this.currentImg < (this.imgAmount-1)){
                     this.currentImg = this.currentImg + 1;
                 }
             }
