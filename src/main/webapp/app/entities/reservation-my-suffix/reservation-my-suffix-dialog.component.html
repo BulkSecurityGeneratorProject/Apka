@@ -35,7 +35,7 @@
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.client" for="field_client">Client</label>
             <select class="form-control" id="field_client" name="client" [(ngModel)]="reservation.clientId" (blur)="ValidateFunction(2)" [ngStyle]="{'border-color' : getColor(2)}" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="clientOption.id" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.id}}</option>
+                <option [ngValue]="clientOption.id" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.name}} {{clientOption.surname}}</option>
             </select>
             <p>{{ infoArray[2] }}</p>
         </div>
@@ -43,7 +43,7 @@
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.room" for="field_room">Room</label>
             <select class="form-control" id="field_room" name="room" [(ngModel)]="reservation.roomId" (blur)="ValidateFunction(3)" [ngStyle]="{'border-color' : getColor(3)}" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="roomOption.id" *ngFor="let roomOption of rooms; trackBy: trackRoomById"> Room number:{{roomOption.roomNumber}}</option>
+                <option [ngValue]="roomOption.id" [hidden]="roomOption.state==true" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.roomNumber}}</option>
             </select>
             <p>{{ infoArray[3] }}</p>
         </div>
