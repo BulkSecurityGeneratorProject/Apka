@@ -19,6 +19,11 @@ export class ContactMySuffixDialogComponent implements OnInit {
     contact: ContactMySuffix;
     isSaving: boolean;
 
+    isTyping = [true, true, true, true];
+    Typing(i,logic){
+        this.isTyping[i] = logic;
+    }
+
     constructor(
         public activeModal: NgbActiveModal,
         private contactService: ContactMySuffixService,

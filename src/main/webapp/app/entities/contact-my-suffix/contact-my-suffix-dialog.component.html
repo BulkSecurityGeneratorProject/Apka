@@ -15,17 +15,31 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.localName" for="field_localName">Local Name</label>
             <input type="text" class="form-control" name="localName" id="field_localName"
-                [(ngModel)]="contact.localName" />
+                [(ngModel)]="contact.localName" required pattern="[A-Z, a-z]{1,}" #localName="ngModel" (focus)="Typing(0,true)" (blur)="Typing(0,false)" />
+            <div [hidden]="localName.valid || isTyping[0]"
+                 class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.contact.localName">LocalName</span><span jhiTranslate="jhipsterApp.contact.required"> is required</span>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.phoneNumber" for="field_phoneNumber">Phone Number</label>
             <input type="number" class="form-control" name="phoneNumber" id="field_phoneNumber"
-                [(ngModel)]="contact.phoneNumber" />
+                [(ngModel)]="contact.phoneNumber" pattern="[0-9]{9}" #phoneNumber="ngModel" (focus)="Typing(1,true)" (blur)="Typing(1,false)" />
+            <div [hidden]="phoneNumber.valid || isTyping[1]"
+                 class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.contact.phoneNumber">phoneNumber</span><span jhiTranslate="jhipsterApp.contact.invalid"> is required</span>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.emailAdress" for="field_emailAdress">Email Adress</label>
             <input type="text" class="form-control" name="emailAdress" id="field_emailAdress"
-                [(ngModel)]="contact.emailAdress" />
+                [(ngModel)]="contact.emailAdress" required
+                   pattern="(^[a-z, A-Z, 0-9]+@[a-z, A-Z, 0-9]+\.[a-z,A-Z,0-9]{1,})" #emailAdress="ngModel"
+                   (focus)="Typing(2,true)" (blur)="Typing(2,false)" />
+            <div [hidden]="emailAdress.valid || isTyping[2]"
+                 class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.contact.emailAdress">emailAdress</span><span jhiTranslate="jhipsterApp.contact.required"> is required</span>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.adress" for="field_adress">Adress</label>

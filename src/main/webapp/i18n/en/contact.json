@@ -9,6 +9,8 @@
             "created": "A new Contact is created with identifier {{ param }}",
             "updated": "A Contact is updated with identifier {{ param }}",
             "deleted": "A Contact is deleted with identifier {{ param }}",
+            "required": " is required!",
+            "invalid": " is invalid!",
             "delete": {
                 "question": "Are you sure you want to delete Contact {{ id }}?"
             },
