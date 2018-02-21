@@ -1,6 +1,7 @@
 {
     "home": {
-        "title": "Agrotourism {{AgroName}}",
+        "title": "Agrotourism",
+        "agroName": "Agrotourism {{AgroName}}",
         "subtitle": "This is your homepage",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."

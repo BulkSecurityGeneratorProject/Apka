@@ -4,9 +4,15 @@ import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { JhiLanguageService } from 'ng-jhipster';
 
 import { ProfileService } from '../profiles/profile.service';
-import { JhiLanguageHelper, Principal, LoginModalService, LoginService } from '../../shared';
+import { JhiLanguageHelper, Principal, LoginModalService, LoginService, ResponseWrapper } from '../../shared';
 
 import { VERSION } from '../../app.constants';
+
+
+import { ContactMySuffix } from '../../entities/contact-my-suffix/contact-my-suffix.model';
+import { ContactMySuffixService } from '../../entities/contact-my-suffix/contact-my-suffix.service';
+import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
+
 
 @Component({
     selector: 'jhi-navbar',
@@ -22,8 +28,11 @@ export class NavbarComponent implements OnInit {
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
+    contacts: ContactMySuffix[];
+    textInfoMoj: string;
 
     constructor(
+        private contactService: ContactMySuffixService,
         private loginService: LoginService,
         private languageService: JhiLanguageService,
         private languageHelper: JhiLanguageHelper,
@@ -36,7 +45,16 @@ export class NavbarComponent implements OnInit {
         this.isNavbarCollapsed = true;
     }
 
+    loadAll() {
+        this.contactService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.contacts = res.json;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
     ngOnInit() {
+        this.loadAll();
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
         });
@@ -75,5 +93,9 @@ export class NavbarComponent implements OnInit {
 
     getImageUrl() {
         return this.isAuthenticated() ? this.principal.getImageUrl() : null;
+    }
+
+    private onError(error) {
+        this.textInfoMoj = "TU POWINNO BYC TO ALE NIE DZIALA this.jhiAlertService.error(error.message, null, null);";
     }
 }
