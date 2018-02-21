@@ -1,11 +1,15 @@
+<div class="centerText">
+    <h4 *ngIf="contacts" class="display-4" jhiTranslate="home.title" translateValues="{AgroName: '{{contacts[(contacts.length-1)].localName}}'}">Welcome, Java Hipster!</h4>
+</div>
 <div class="row">
+
     <div class="col-md-3">
         <span class="hipster img-fluid rounded"></span>
     </div>
-    <div class="col-md-9">
 
-        <h4 *ngIf="account" class="display-4" jhiTranslate="home.title" translateValues="{AgroName: '{{account.login}}'}">Welcome, Java Hipster!</h4>
+    <div class="col-md-9">
         <p class="lead" jhiTranslate="home.subtitle">This is your homepage</p>
+        <p *ngIf="contacts" >{{contacts[(contacts.length-1)].localName}}</p>
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
