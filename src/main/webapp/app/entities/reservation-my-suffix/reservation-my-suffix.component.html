@@ -31,12 +31,12 @@
                 <td class="centerText">{{reservation.finishDate | date:'medium'}}</td>
                 <td class="centerText">
                     <div *ngIf="reservation.clientId">
-                        <a [routerLink]="['../client-my-suffix', reservation.clientId  ]" >{{reservation.clientId}}</a>
+                        <a *ngIf="clients" [routerLink]="['../client-my-suffix', reservation.clientId  ]" >{{convertFromID(clients, reservation.clientId )}}</a>
                     </div>
                 </td>
                 <td class="centerText">
                     <div *ngIf="reservation.roomId">
-                        <a [routerLink]="['../room-my-suffix', reservation.roomId  ]" >{{reservation.roomId}}</a>
+                        <a *ngIf="rooms" [routerLink]="['../room-my-suffix', reservation.roomId  ]" >{{convertFromID(rooms, reservation.roomId )}}</a>
                     </div>
                 </td>
                 <td class="text-right">

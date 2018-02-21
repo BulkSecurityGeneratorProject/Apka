@@ -12,7 +12,9 @@
         <div id="controlButtons" [@imgAnimation]="state" (@imgAnimation.done)="test($event)">
             <input type="button" jhiTranslate="jhipsterApp.room.previous" (click)="animateTransition('previous')" [disabled]="currentImg == 0" class="pad" value="Previous" />
             <input type="button" jhiTranslate="jhipsterApp.room.next"  (click)="animateTransition('next')" [disabled]="currentImg == imgAmount-1" class="pad odstep" value="Next" />
-        </div>
+ <!--       <button (click)="animateTransition('previous')" [disabled]="currentImg == 0" class="pad" ><span jhiTranslate="jhipsterApp.room.next"></span></button>
+            <button (click)="animateTransition('next')" [disabled]="currentImg == imgAmount-1" class="pad odstep" ><span jhiTranslate="jhipsterApp.room.previous"></span></button>
+ -->       </div>
     </div>
     <div class="modal-footer">
     </div>

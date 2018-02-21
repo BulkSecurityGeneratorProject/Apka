@@ -6,6 +6,9 @@ import { ReservationMySuffix } from './reservation-my-suffix.model';
 import { ReservationMySuffixService } from './reservation-my-suffix.service';
 import { Principal, ResponseWrapper } from '../../shared';
 
+import { ClientMySuffix, ClientMySuffixService } from '../client-my-suffix';
+import { RoomMySuffix, RoomMySuffixService } from '../room-my-suffix';
+
 @Component({
     selector: 'jhi-reservation-my-suffix',
     templateUrl: './reservation-my-suffix.component.html'
@@ -15,9 +18,15 @@ reservations: ReservationMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
 
+    clients: ClientMySuffix[];
+
+    rooms: RoomMySuffix[];
+
     constructor(
         private reservationService: ReservationMySuffixService,
         private jhiAlertService: JhiAlertService,
+        private clientService: ClientMySuffixService,
+        private roomService: RoomMySuffixService,
         private eventManager: JhiEventManager,
         private principal: Principal
     ) {
@@ -30,6 +39,10 @@ reservations: ReservationMySuffix[];
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
+        this.clientService.query()
+            .subscribe((res: ResponseWrapper) => { this.clients = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.roomService.query()
+            .subscribe((res: ResponseWrapper) => { this.rooms = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
     ngOnInit() {
         this.loadAll();
@@ -57,7 +70,7 @@ reservations: ReservationMySuffix[];
     convertFromID(tableEntity, resID){
         for(var i = 0; tableEntity.length > i; i++){
             if(tableEntity[i].id == resID){
-                if(tableEntity == "this.rooms"){
+                if(tableEntity == this.rooms){
                     return tableEntity[i].roomNumber;
                 }
                 else{
