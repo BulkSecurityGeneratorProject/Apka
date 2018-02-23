@@ -2,25 +2,25 @@
     "jhipsterApp": {
         "contact" : {
             "home": {
-                "title": "Contacts",
-                "createLabel": "Dodaj Contact",
-                "createOrEditLabel": "Dodaj lub edytuj: Contact"
+                "title": "Kontakt",
+                "createLabel": "Dodaj Kontakt",
+                "createOrEditLabel": "Dodaj lub edytuj: Kontakt"
             },
-            "created": "Utworzono nowy Contact z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Contact z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Contact z identyfikatorem {{ param }}",
-            "required": " is required!",
-            "invalid": " is invalid!",
+            "created": "Utworzono nowy Kontakt z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Kontakt z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Kontakt z identyfikatorem {{ param }}",
+            "required": " wartość konieczna!",
+            "invalid": "nieprawidłowy!",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Contact {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Kontakt {{ id }}?"
             },
             "detail": {
-                "title": "Contact"
+                "title": "Kontakt"
             },
-            "localName": "Local Name",
-            "phoneNumber": "Phone Number",
-            "emailAdress": "Email Adress",
-            "adress": "Adress"
+            "localName": "Nazwa",
+            "phoneNumber": "Numer telefonu",
+            "emailAdress": "Email",
+            "adress": "Adres"
         }
     }
 }

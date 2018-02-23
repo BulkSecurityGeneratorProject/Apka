@@ -1,0 +1,22 @@
+{
+    "jhipsterApp": {
+        "mainPage" : {
+            "home": {
+                "title": "Main Pages",
+                "createLabel": "Dodaj Main Page",
+                "createOrEditLabel": "Dodaj lub edytuj: Main Page"
+            },
+            "created": "Utworzono nowy Main Page z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Main Page z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Main Page z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Main Page {{ id }}?"
+            },
+            "detail": {
+                "title": "Main Page"
+            },
+            "homePageImg": "Home Page Img",
+            "homepageText": "Homepage Text"
+        }
+    }
+}
