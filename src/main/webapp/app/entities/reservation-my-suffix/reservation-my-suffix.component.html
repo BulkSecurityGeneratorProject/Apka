@@ -27,8 +27,8 @@
             <tbody>
             <tr *ngFor="let reservation of reservations ;trackBy: trackId">
                 <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{reservation.id}}</a></td>
-                <td class="centerText">{{reservation.startDate | date:'medium'}}</td>
-                <td class="centerText">{{reservation.finishDate | date:'medium'}}</td>
+                <td class="centerText">{{reservation.startDate | date:'longDate'}}</td>
+                <td class="centerText">{{reservation.finishDate | date:'longDate'}}</td>
                 <td class="centerText">
                     <div *ngIf="reservation.clientId">
                         <a *ngIf="clients" [routerLink]="['../client-my-suffix', reservation.clientId  ]" >{{convertFromID(clients, reservation.clientId )}}</a>

@@ -14,21 +14,23 @@
         </dd>
         <dt><span jhiTranslate="jhipsterApp.room.price">Price</span></dt>
         <dd>
-            <span>{{room.price}}</span>
+            <p *ngIf="room.price">{{room.price}} zł</p>
+            <p *ngIf="!room.price">-</p>
         </dd>
         <dt><span jhiTranslate="jhipsterApp.room.state">State</span></dt>
         <dd>
-            <span>{{room.state}}</span>
+            <p *ngIf="room.state == true" jhiTranslate="jhipsterApp.room.occupied">occupied</p>
+            <p *ngIf="room.state == false" jhiTranslate="jhipsterApp.room.available">available</p>
         </dd>
         <dt><span jhiTranslate="jhipsterApp.room.inventory">Inventory</span></dt>
         <dd>
-            <span>{{room.inventory}}</span>
+            <p *ngIf="room.inventory">{{room.inventory}}</p>
+            <p *ngIf="!room.inventory">-</p>
         </dd>
         <dt><span jhiTranslate="jhipsterApp.room.photos">Photos</span></dt>
         <dd>
-            <span *ngFor="let photos of room.photos; let last = last">
-                <a [routerLink]="['/photos-my-suffix', photos?.id ]">{{photos.id}}</a>{{last ? '' : ', '}}
-            </span>
+            <a *ngIf="room.photos.length" [routerLink]="['/', { outlets: { popup: 'room-my-suffix/'+ room.id + '/edit/img'} }]">img</a>
+            <p *ngIf="!room.photos.length">-</p>
         </dd>
     </dl>
 
