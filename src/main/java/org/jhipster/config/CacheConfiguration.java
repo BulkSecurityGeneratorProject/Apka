@@ -55,6 +55,7 @@ public class CacheConfiguration {
             cm.createCache(org.jhipster.domain.Contact.class.getName(), jcacheConfiguration);
             cm.createCache(org.jhipster.domain.Photos.class.getName(), jcacheConfiguration);
             cm.createCache(org.jhipster.domain.Photos.class.getName() + ".rooms", jcacheConfiguration);
+            cm.createCache(org.jhipster.domain.MainPage.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

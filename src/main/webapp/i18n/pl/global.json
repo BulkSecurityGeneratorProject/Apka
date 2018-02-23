@@ -12,6 +12,7 @@
                 "clientMySuffix": "Client",
                 "contactMySuffix": "Contact",
                 "photosMySuffix": "Photos",
+                "mainPage": "Main Page",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
