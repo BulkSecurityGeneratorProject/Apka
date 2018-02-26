@@ -19,13 +19,14 @@
             </thead>
             <tbody>
             <tr *ngFor="let contact of contacts ;trackBy: trackId">
+                <td><a [routerLink]="['../contact-my-suffix', contact.id ]">{{contact.id}}</a></td>
                 <td>{{contact.localName}}</td>
                 <td>{{contact.phoneNumber}}</td>
                 <td>{{contact.emailAdress}}</td>
                 <td>{{contact.adress}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button *jhiHasAnyAuthority="'ROLE_OWNER' || 'ROLE_ADMIN'" type="submit"
+                        <button *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_OWNER']" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'contact-my-suffix/'+ contact.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
