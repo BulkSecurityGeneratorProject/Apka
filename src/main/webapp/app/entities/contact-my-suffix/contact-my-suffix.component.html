@@ -10,7 +10,6 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
             <th><span jhiTranslate="jhipsterApp.contact.localName">Local Name</span></th>
             <th><span jhiTranslate="jhipsterApp.contact.phoneNumber">Phone Number</span></th>
             <th><span jhiTranslate="jhipsterApp.contact.emailAdress">Email Adress</span></th>
@@ -20,20 +19,13 @@
             </thead>
             <tbody>
             <tr *ngFor="let contact of contacts ;trackBy: trackId">
-                <td><a [routerLink]="['../contact-my-suffix', contact.id ]">{{contact.id}}</a></td>
                 <td>{{contact.localName}}</td>
                 <td>{{contact.phoneNumber}}</td>
                 <td>{{contact.emailAdress}}</td>
                 <td>{{contact.adress}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
-                                [routerLink]="['../contact-my-suffix', contact.id ]"
-                                class="btn btn-info btn-sm">
-                            <span class="fa fa-eye"></span>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="'ROLE_OWNER' || 'ROLE_ADMIN'" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'contact-my-suffix/'+ contact.id + '/edit'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"
@@ -41,7 +33,7 @@
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
+                        <button *jhiHasAnyAuthority="'ROLE_ADMIN'" type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'contact-my-suffix/'+ contact.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"

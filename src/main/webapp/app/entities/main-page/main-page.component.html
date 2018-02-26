@@ -1,0 +1,65 @@
+<div>
+    <h2>
+        <span jhiTranslate="jhipsterApp.mainPage.home.title">Main Pages</span>
+        <button class="btn btn-primary float-right jh-create-entity create-main-page" [routerLink]="['/', { outlets: { popup: ['main-page-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="jhipsterApp.mainPage.home.createLabel">
+            Create new Main Page
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="mainPages">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="jhipsterApp.mainPage.homePageImg">Home Page Img</span></th>
+            <th><span jhiTranslate="jhipsterApp.mainPage.homepageText">Homepage Text</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let mainPage of mainPages ;trackBy: trackId">
+                <td><a [routerLink]="['../main-page', mainPage.id ]">{{mainPage.id}}</a></td>
+                <td>
+                    <a *ngIf="mainPage.homePageImg" (click)="openFile(mainPage.homePageImgContentType, mainPage.homePageImg)">
+                        <img [src]="'data:' + mainPage.homePageImgContentType + ';base64,' + mainPage.homePageImg" style="max-height: 30px;" alt="mainPage image"/>
+                    </a>
+                    <span *ngIf="mainPage.homePageImg">{{mainPage.homePageImgContentType}}, {{byteSize(mainPage.homePageImg)}}</span>
+                </td>
+                <td>{{mainPage.homepageText}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../main-page', mainPage.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'main-page/'+ mainPage.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'main-page/'+ mainPage.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

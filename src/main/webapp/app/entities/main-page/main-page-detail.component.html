@@ -1,0 +1,35 @@
+
+<div *ngIf="mainPage">
+    <h2><span jhiTranslate="jhipsterApp.mainPage.detail.title">Main Page</span> {{mainPage.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="jhipsterApp.mainPage.homePageImg">Home Page Img</span></dt>
+        <dd>
+            <div *ngIf="mainPage.homePageImg">
+                <a (click)="openFile(mainPage.homePageImgContentType, mainPage.homePageImg)">
+                    <img [src]="'data:' + mainPage.homePageImgContentType + ';base64,' + mainPage.homePageImg" style="max-width: 100%;" alt="mainPage image"/>
+                </a>
+                {{mainPage.homePageImgContentType}}, {{byteSize(mainPage.homePageImg)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="jhipsterApp.mainPage.homepageText">Homepage Text</span></dt>
+        <dd>
+            <span>{{mainPage.homepageText}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'main-page/'+ mainPage.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -7,11 +7,6 @@
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!contact.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="contact.id" readonly />
-        </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.localName" for="field_localName">Local Name</label>
             <input type="text" class="form-control" name="localName" id="field_localName"

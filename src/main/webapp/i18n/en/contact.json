@@ -2,7 +2,7 @@
     "jhipsterApp": {
         "contact" : {
             "home": {
-                "title": "Contacts",
+                "title": "Contact",
                 "createLabel": "Create a new Contact",
                 "createOrEditLabel": "Create or edit a Contact"
             },
@@ -19,7 +19,7 @@
             },
             "localName": "Local Name",
             "phoneNumber": "Phone Number",
-            "emailAdress": "Email Adress",
+            "emailAdress": "Email",
             "adress": "Adress"
         }
     }

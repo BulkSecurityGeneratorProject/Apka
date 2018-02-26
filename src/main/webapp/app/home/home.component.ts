@@ -6,6 +6,8 @@ import { Account, LoginModalService, Principal, ResponseWrapper } from '../share
 
 import { ContactMySuffix } from '../entities/contact-my-suffix/contact-my-suffix.model';
 import { ContactMySuffixService } from '../entities/contact-my-suffix/contact-my-suffix.service';
+import { MainPage } from '../entities/main-page/main-page.model';
+import { MainPageService } from '../entities/main-page/main-page.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
@@ -20,9 +22,12 @@ export class HomeComponent implements OnInit {
     account: Account;
     modalRef: NgbModalRef;
     contacts: ContactMySuffix[];
+    mainPages: MainPage[];
+
 
     constructor(
         private contactService: ContactMySuffixService,
+        private mainPageService: MainPageService,
         private jhiAlertService: JhiAlertService,
         private principal: Principal,
         private loginModalService: LoginModalService,
@@ -34,6 +39,12 @@ export class HomeComponent implements OnInit {
         this.contactService.query().subscribe(
             (res: ResponseWrapper) => {
                 this.contacts = res.json;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+        this.mainPageService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.mainPages = res.json;
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );

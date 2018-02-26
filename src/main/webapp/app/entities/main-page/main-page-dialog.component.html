@@ -1,0 +1,47 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMainPageLabel" jhiTranslate="jhipsterApp.mainPage.home.createOrEditLabel">Create or edit a Main Page</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!mainPage.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="mainPage.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhipsterApp.mainPage.homePageImg" for="field_homePageImg">Home Page Img</label>
+            <div>
+                <img [src]="'data:' + mainPage.homePageImgContentType + ';base64,' + mainPage.homePageImg" style="max-height: 100px;" *ngIf="mainPage.homePageImg" alt="mainPage image"/>
+                <div *ngIf="mainPage.homePageImg" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{mainPage.homePageImgContentType}}, {{byteSize(mainPage.homePageImg)}}</span>
+                    <button type="button" (click)="clearInputImage('homePageImg', 'homePageImgContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" id="file_homePageImg" (change)="setFileData($event, mainPage, 'homePageImg', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="homePageImg" id="field_homePageImg"
+                [(ngModel)]="mainPage.homePageImg" />
+            <input type="hidden" class="form-control" name="homePageImgContentType" id="field_homePageImgContentType"
+                [(ngModel)]="mainPage.homePageImgContentType" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="jhipsterApp.mainPage.homepageText" for="field_homepageText">Homepage Text</label>
+            <input type="text" class="form-control" name="homepageText" id="field_homepageText"
+                [(ngModel)]="mainPage.homepageText" />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>
