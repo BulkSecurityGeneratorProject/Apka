@@ -16,6 +16,7 @@ import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 
 import {
