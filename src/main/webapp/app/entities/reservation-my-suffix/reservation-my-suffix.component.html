@@ -19,6 +19,7 @@
             <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.startDate">Start Date</span></th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.finishDate">Finish Date</span></th>
+                <th>DNI POMIEDZY</th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.client">Client</span></th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.room">Room</span></th>
             <th></th>
@@ -29,6 +30,14 @@
                 <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{reservation.id}}</a></td>
                 <td class="centerText">{{reservation.startDate | date:'longDate'}}</td>
                 <td class="centerText">{{reservation.finishDate | date:'longDate'}}</td>
+                <td><!--<span>DNI POMIĘDZY: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'d'}}</span>-->
+                   <!-- liczby: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'longDate'}} -->
+                    <span *ngFor="let daysBet of getDaysBetween(reservation.startDate,reservation.finishDate);">
+                        {{ daysBet | date:'longDate' }}
+                        <span *ngIf="reservation.roomId == chosenRoom && awsomeFunction()"> {{ addRooomToOccupiedTable(daysBet) }} </span>
+                    </span>
+                </td>
+                <span *ngIf="reservation.roomId == chosenRoom" [hidden] ="true">{{ setWasCalled() }}</span>
                 <td class="centerText">
                     <div *ngIf="reservation.clientId">
                         <a *ngIf="clients" [routerLink]="['../client-my-suffix', reservation.clientId  ]" >{{convertFromID(clients, reservation.clientId )}}</a>
@@ -66,7 +75,14 @@
                     </div>
                 </td>
             </tr>
+
             </tbody>
         </table>
+        <p>POKOJE {{ roomsLength }}</p>
+        <p (click)="test()"> KLIKNIJ {{ tablicaZajebistosci[1][1] }} </p>
+        TEST_ROOM: {{ howManyTest }}
+        RES_TEST: {{ howManyRes }}
+        <br/>
+        <span *ngFor="let roomOccupied of tablicaZajebistosci[0]">{{ roomOccupied  | date:'longDate'}} ,</span>
     </div>
 </div>
