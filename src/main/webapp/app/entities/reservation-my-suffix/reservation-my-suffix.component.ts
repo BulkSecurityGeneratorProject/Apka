@@ -11,6 +11,7 @@ import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent} from '
 
 import { ClientMySuffix, ClientMySuffixService } from '../client-my-suffix';
 import { RoomMySuffix, RoomMySuffixService } from '../room-my-suffix';
+import { DatePipe } from '@angular/common';
 
 const colors: any = {
 red: {
@@ -28,7 +29,6 @@ secondary: '#FDF1BA'
 };
 
 @Component({
-
     selector: 'jhi-reservation-my-suffix',
 changeDetection: ChangeDetectionStrategy.OnPush,
     templateUrl: './reservation-my-suffix.component.html',
@@ -42,6 +42,19 @@ reservations: ReservationMySuffix[];
     clients: ClientMySuffix[];
 
     rooms: RoomMySuffix[];
+
+    wasCalled = 0;
+    howManyRes = 0;
+    howManyResTest = 0;
+    howManyTest = 0;
+    roomOccupiedTest = [];
+    roomOccupiedTest2 = [1,2];
+    roomsNumbers = [];
+    varPom = 0;
+    chosenRoom = 98;
+    roomsLength = 0;
+
+    tablicaZajebistosci = [this.roomOccupiedTest, this.roomOccupiedTest2];
 
     constructor(
         private reservationService: ReservationMySuffixService,
@@ -72,6 +85,7 @@ reservations: ReservationMySuffix[];
             this.currentAccount = account;
         });
         this.registerChangeInReservations();
+        this.countRooms();
     }
 
     ngOnDestroy() {
@@ -186,4 +200,73 @@ reservations: ReservationMySuffix[];
     });
     this.refresh.next();
   }
+    getDaysBetween(startDate, finishDate){
+        let Napis="";
+        let numberOfDays = (finishDate - startDate)/86400000;
+        let daysBetween = [];
+
+        for(let i = 0; i < (numberOfDays-1); i++){
+            daysBetween[daysBetween.length] = new Date((startDate-0) + (i+1)*86400000);
+            Napis += daysBetween[i];
+        }
+        return daysBetween;
+    }
+
+    addRooomToOccupiedTable(dateOccupied){
+        for (let i = 0;  i < (this.tablicaZajebistosci[0].length-1); i++){
+            if(this.tablicaZajebistosci[0][i] === dateOccupied){
+                return "Bylo";
+            }
+        }
+        this.tablicaZajebistosci[0][this.tablicaZajebistosci[0].length] = dateOccupied;
+    }
+
+
+    awsomeFunction(){
+        if (this.wasCalled == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    setWasCalled(){
+        if( this.varPom == 0){
+            this.countRooms();
+            this.getRoomsNumber();
+            this.varPom = 1;
+        }
+        if( this.howManyRes == 1 ){
+            this.wasCalled = 1;
+        }
+        else{
+            this.howManyRes -= 1;
+        }
+    }
+
+    countRooms(){
+        if(this.reservations && this.varPom == 0){
+            this.howManyTest = this.reservations.length;
+            for( let i = 0; i < this.reservations.length; i++){
+                if(this.reservations[i].roomId == this.chosenRoom){
+                    this.howManyRes += 1;
+                }
+            }
+            this.varPom = 1;
+        }
+    }
+
+    test(){
+        this.chosenRoom = 71;
+        this.varPom = 0;
+        this.howManyRes = 0;
+        this.wasCalled = 0;
+    }
+
+    getRoomsNumber(){
+        if(this.rooms){
+            this.roomsLength = this.rooms.length;
+        }
+    }
 }
