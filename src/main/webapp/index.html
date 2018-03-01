@@ -11,19 +11,18 @@
     <meta name="theme-color" content="#000000">
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
-    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+    <link href="https://unpkg.com/bootstrap@4.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/font-awesome@4.7.0/css/font-awesome.css" rel="stylesheet">
+    <link href="https://unpkg.com/angular-calendar@0.23.6/css/angular-calendar.css" rel="stylesheet">
+    <script src="https://unpkg.com/zone.js@0.8.20"></script>
+    <script src="https://unpkg.com/zone.js@0.8.20/dist/long-stack-trace-zone.js"></script>
+    <script src="https://unpkg.com/reflect-metadata@0.1.12"></script>
+    <script src="https://unpkg.com/systemjs@0.19/dist/system.js"></script>
+    <script src="config.js"></script>
     <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCr-SLpjH4FIriAPKvDc9QnwEkW4HOIX74",
-    authDomain: "my-project-1518702915334.firebaseapp.com",
-    databaseURL: "https://my-project-1518702915334.firebaseio.com",
-    projectId: "my-project-1518702915334",
-    storageBucket: "",
-    messagingSenderId: "728515329383"
-  };
-  firebase.initializeApp(config);
-</script>
+    System.import('app').catch(console.error.bind(console));
+    </script>
+
     <!-- jhipster-needle-add-resources-to-root - JHipster will add new resources here -->
 </head>
 <body>

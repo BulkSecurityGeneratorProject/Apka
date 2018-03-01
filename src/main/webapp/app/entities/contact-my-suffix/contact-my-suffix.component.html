@@ -1,6 +1,6 @@
 <div>
-    <h2>
-        <span jhiTranslate="jhipsterApp.contact.home.title">Contacts</span>
+    <h2 class="text-center">
+        <span  jhiTranslate="jhipsterApp.contact.home.title">Contacts</span>
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
@@ -19,7 +19,6 @@
             </thead>
             <tbody>
             <tr *ngFor="let contact of contacts ;trackBy: trackId">
-                <td><a [routerLink]="['../contact-my-suffix', contact.id ]">{{contact.id}}</a></td>
                 <td>{{contact.localName}}</td>
                 <td>{{contact.phoneNumber}}</td>
                 <td>{{contact.emailAdress}} </td>
