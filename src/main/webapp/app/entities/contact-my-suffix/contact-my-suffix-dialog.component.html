@@ -19,7 +19,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.phoneNumber" for="field_phoneNumber">Phone Number</label>
             <input type="number" class="form-control" name="phoneNumber" id="field_phoneNumber"
-                [(ngModel)]="contact.phoneNumber" pattern="[0-9]{9}" #phoneNumber="ngModel" (focus)="Typing(1,true)" (blur)="Typing(1,false)" />
+                [(ngModel)]="contact.phoneNumber" required pattern="[0-9]{9}" #phoneNumber="ngModel" (focus)="Typing(1,true)" (blur)="Typing(1,false)" />
             <div [hidden]="phoneNumber.valid || isTyping[1]"
                  class="alert alert-danger" >
                 <span jhiTranslate="jhipsterApp.contact.phoneNumber">phoneNumber</span><span jhiTranslate="jhipsterApp.contact.invalid"> is required</span>
@@ -33,13 +33,17 @@
                    (focus)="Typing(2,true)" (blur)="Typing(2,false)" />
             <div [hidden]="emailAdress.valid || isTyping[2]"
                  class="alert alert-danger" >
-                <span jhiTranslate="jhipsterApp.contact.emailAdress">emailAdress</span><span jhiTranslate="jhipsterApp.contact.required"> is required</span>
+                <span jhiTranslate="jhipsterApp.contact.emailAdress">emailAdress</span><span jhiTranslate="jhipsterApp.contact.invalid"> is required</span>
             </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.contact.adress" for="field_adress">Adress</label>
-            <input type="text" class="form-control" name="adress" id="field_adress"
-                [(ngModel)]="contact.adress" />
+            <input type="text" class="form-control" name="adress" id="field_adress" required
+                [(ngModel)]="contact.adress"  #adress="ngModel" (focus)="Typing(3,true)" (blur)="Typing(3,false)"/>
+            <div [hidden]="adress.valid || isTyping[3]"
+                 class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.contact.adress">emailAdress</span><span jhiTranslate="jhipsterApp.contact.required"> is required</span>
+            </div>
         </div>
 
     </div>
