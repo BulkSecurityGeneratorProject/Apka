@@ -16,13 +16,13 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
-            <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.startDate">Start Date</span></th>
-            <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.finishDate">Finish Date</span></th>
+                <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.startDate">Start Date</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.finishDate">Finish Date</span></th>
                 <th class="centerText">DNI POMIEDZY</th>
-            <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.client">Client</span></th>
-            <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.room">Room</span></th>
-            <th></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.client">Client</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.reservation.room">Room</span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -31,7 +31,7 @@
                 <td class="centerText">{{reservation.startDate | date:'longDate'}}</td>
                 <td class="centerText">{{reservation.finishDate | date:'longDate'}}</td>
                 <td class="centerText"><!--<span>DNI POMIĘDZY: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'d'}}</span>-->
-                   <!-- liczby: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'longDate'}} -->
+                    <!-- liczby: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'longDate'}} -->
                     <span *ngFor="let daysBet of getDaysBetween(reservation.startDate,reservation.finishDate);">
                         {{ daysBet | date:'longDate' }}
                         <span *ngIf="reservation.roomId == chosenRoom && awsomeFunction()"> {{ addRooomToOccupiedTable(daysBet) }} </span>
@@ -75,24 +75,30 @@
                     </div>
                 </td>
             </tr>
-
             </tbody>
         </table>
-<!--        <p *ngIf="rooms">POKOJE {{ rooms.length }}</p>
-        <p (click)="test()"> KLIKNIJ {{ roomOccupiedArray[1][1] }} </p>
-        TEST_ROOM: {{ howManyTest }}
-        RES_TEST: {{ howManyRes }}
-        <br/>
- -->
-        <p *ngIf="rooms">Niedostępność pokoju: {{convertFromID(rooms, chosenRoom )}}</p>
-        <span *ngFor="let roomOccupied of roomOccupiedArray[2]">{{ roomOccupied  | date:'longDate'}} ,</span>
+
+        <!--       <p *ngIf="rooms">POKOJE {{ rooms.length }}</p>
+               <p (click)="test()"> KLIKNIJ {{ roomOccupiedArray[1][1] }} </p>
+               TEST_ROOM: {{ howManyTest }}
+               RES_TEST: {{ howManyRes }}
+               <br/>
+
+               <p *ngIf="roomOccupiedArray[2]"> cossss </p>
+       -->     <p *ngIf="rooms">Niedostępność pokoju: {{convertFromID(rooms, chosenRoom )}}</p>
+        <span *ngFor="let roomOccupied of roomOccupiedArray[0]">{{ roomOccupied  | date:'longDate'}} ,</span>
+        <p></p>
         <div *ngIf="reservations && rooms">
             <button *ngFor="let roomNU of reservations" (click)="changeRoom(roomNU.roomId)">
                 {{convertFromID(rooms, roomNU.roomId )}}
             </button>
         </div>
+        <p *ngIf="rooms"> {{ rooms.length }} </p>
+        <p> POKOJ : {{ roomsLength }}</p>
     </div>
-</div><br><br>
+</div>
+<br/>
+<br/>
 
 <ng-template #modalContent let-close="close">
     <div class="modal-header">
@@ -176,3 +182,4 @@
         (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-day-view>
 </div>
+

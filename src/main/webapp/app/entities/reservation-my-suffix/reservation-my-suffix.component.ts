@@ -30,9 +30,7 @@ secondary: '#FDF1BA'
 
 @Component({
     selector: 'jhi-reservation-my-suffix',
-changeDetection: ChangeDetectionStrategy.OnPush,
-    templateUrl: './reservation-my-suffix.component.html',
-styleUrls: ['styles.scss'],
+    templateUrl: './reservation-my-suffix.component.html'
 })
 export class ReservationMySuffixComponent implements OnInit, OnDestroy {
 reservations: ReservationMySuffix[];
@@ -62,8 +60,8 @@ reservations: ReservationMySuffix[];
         private clientService: ClientMySuffixService,
         private roomService: RoomMySuffixService,
         private eventManager: JhiEventManager,
-        private principal: Principal,
-         private modal: NgbModal
+        private modal: NgbModal,
+        private principal: Principal
     ) {
     }
 
@@ -85,8 +83,7 @@ reservations: ReservationMySuffix[];
             this.currentAccount = account;
         });
         this.registerChangeInReservations();
-        this.countRooms();
-        this.getRoomsNumber();
+
     }
 
     ngOnDestroy() {
@@ -116,7 +113,89 @@ reservations: ReservationMySuffix[];
             }
         }
     }
-      @ViewChild('modalContent') modalContent: TemplateRef<any>;
+
+    getDaysBetween(startDate, finishDate){
+        let Napis="";
+        let numberOfDays = (finishDate - startDate)/86400000;
+        let daysBetween = [];
+
+        this.getRoomsNumber();
+        for(let i = 0; i < (numberOfDays-1); i++){
+            daysBetween[daysBetween.length] = new Date((startDate-0) + (i+1)*86400000);
+            Napis += daysBetween[i];
+        }
+        return daysBetween;
+    }
+
+    addRooomToOccupiedTable(dateOccupied){
+        for (let i = 0;  i < (this.roomOccupiedArray[2].length-1); i++){
+            if(this.roomOccupiedArray[2][i] === dateOccupied){
+                return "Bylo";
+            }
+        }
+        this.roomOccupiedArray[2][this.roomOccupiedArray[2].length] = dateOccupied;
+    }
+
+
+    awsomeFunction(){
+        if (this.wasCalled == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    setWasCalled(){
+        if( this.varPom == 0){
+            this.countRooms();
+            this.varPom = 1;
+        }
+        if( this.howManyRes == 1 ){
+            this.wasCalled = 1;
+        }
+        else{
+            this.howManyRes -= 1;
+        }
+    }
+
+    countRooms(){
+        if(this.reservations && this.varPom == 0){
+            this.howManyTest = this.reservations.length;
+            for( let i = 0; i < this.reservations.length; i++){
+                if(this.reservations[i].roomId == this.chosenRoom){
+                    this.howManyRes += 1;
+                }
+            }
+            this.varPom = 1;
+        }
+    }
+
+    test(){
+        this.chosenRoom = 71;
+        this.varPom = 0;
+        this.howManyRes = 0;
+        this.wasCalled = 0;
+    }
+
+    getRoomsNumber(){
+        if(this.rooms){
+            this.roomsLength = this.rooms.length;
+        }
+        for(let i = 1; i < (this.roomsLength - 1); i++){
+            this.roomOccupiedArray[i] = this.roomOccupiedTest;
+        }
+    }
+
+    changeRoom(roomN){
+        this.chosenRoom = roomN;
+        this.varPom = 0;
+        this.howManyRes = 0;
+        this.wasCalled = 0;
+        this.roomOccupiedArray[2].length = 0;
+    }
+
+          @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: string = 'month';
 
@@ -201,81 +280,4 @@ reservations: ReservationMySuffix[];
     });
     this.refresh.next();
   }
-    getDaysBetween(startDate, finishDate){
-        let Napis="";
-        let numberOfDays = (finishDate - startDate)/86400000;
-        let daysBetween = [];
-
-        for(let i = 0; i < (numberOfDays-1); i++){
-            daysBetween[daysBetween.length] = new Date((startDate-0) + (i+1)*86400000);
-            Napis += daysBetween[i];
-        }
-        return daysBetween;
-    }
-
-    addRooomToOccupiedTable(dateOccupied){
-        for (let i = 0;  i < (this.roomOccupiedArray[2].length-1); i++){
-            if(this.roomOccupiedArray[2][i] === dateOccupied){
-                return "Bylo";
-            }
-        }
-        this.roomOccupiedArray[2][this.roomOccupiedArray[2].length] = dateOccupied;
-    }
-
-
-    awsomeFunction(){
-        if (this.wasCalled == 0){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    setWasCalled(){
-        if( this.varPom == 0){
-            this.countRooms();
-            this.getRoomsNumber();
-            this.varPom = 1;
-        }
-        if( this.howManyRes == 1 ){
-            this.wasCalled = 1;
-        }
-        else{
-            this.howManyRes -= 1;
-        }
-    }
-
-    countRooms(){
-        if(this.reservations && this.varPom == 0){
-            this.howManyTest = this.reservations.length;
-            for( let i = 0; i < this.reservations.length; i++){
-                if(this.reservations[i].roomId == this.chosenRoom){
-                    this.howManyRes += 1;
-                }
-            }
-            this.varPom = 1;
-        }
-    }
-
-    test(){
-        this.chosenRoom = 71;
-        this.varPom = 0;
-        this.howManyRes = 0;
-        this.wasCalled = 0;
-    }
-
-    getRoomsNumber(){
-        if(this.rooms){
-            this.roomsLength = this.rooms.length;
-        }
-    }
-
-    changeRoom(roomN){
-        this.chosenRoom = roomN;
-        this.varPom = 0;
-        this.howManyRes = 0;
-        this.wasCalled = 0;
-        this.roomOccupiedArray[2].length = 0;
-    }
 }
