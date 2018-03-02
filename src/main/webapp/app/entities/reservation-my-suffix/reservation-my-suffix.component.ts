@@ -31,10 +31,10 @@ reservations: ReservationMySuffix[];
     roomOccupiedTest2 = [1,2];
     roomsNumbers = [];
     varPom = 0;
-    chosenRoom = 98;
+    chosenRoom = 71;
     roomsLength = 0;
 
-    tablicaZajebistosci = [this.roomOccupiedTest, this.roomOccupiedTest2];
+    roomOccupiedArray = [this.roomOccupiedTest, this.roomOccupiedTest2, this.roomOccupiedTest];
 
     constructor(
         private reservationService: ReservationMySuffixService,
@@ -65,6 +65,7 @@ reservations: ReservationMySuffix[];
         });
         this.registerChangeInReservations();
         this.countRooms();
+        this.getRoomsNumber();
     }
 
     ngOnDestroy() {
@@ -108,12 +109,12 @@ reservations: ReservationMySuffix[];
     }
 
     addRooomToOccupiedTable(dateOccupied){
-        for (let i = 0;  i < (this.tablicaZajebistosci[0].length-1); i++){
-            if(this.tablicaZajebistosci[0][i] === dateOccupied){
+        for (let i = 0;  i < (this.roomOccupiedArray[2].length-1); i++){
+            if(this.roomOccupiedArray[2][i] === dateOccupied){
                 return "Bylo";
             }
         }
-        this.tablicaZajebistosci[0][this.tablicaZajebistosci[0].length] = dateOccupied;
+        this.roomOccupiedArray[2][this.roomOccupiedArray[2].length] = dateOccupied;
     }
 
 
@@ -163,5 +164,13 @@ reservations: ReservationMySuffix[];
         if(this.rooms){
             this.roomsLength = this.rooms.length;
         }
+    }
+
+    changeRoom(roomN){
+        this.chosenRoom = roomN;
+        this.varPom = 0;
+        this.howManyRes = 0;
+        this.wasCalled = 0;
+        this.roomOccupiedArray[2].length = 0;
     }
 }

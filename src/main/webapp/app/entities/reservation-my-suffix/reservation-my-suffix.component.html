@@ -78,11 +78,18 @@
 
             </tbody>
         </table>
-        <p>POKOJE {{ roomsLength }}</p>
-        <p (click)="test()"> KLIKNIJ {{ tablicaZajebistosci[1][1] }} </p>
+<!--        <p *ngIf="rooms">POKOJE {{ rooms.length }}</p>
+        <p (click)="test()"> KLIKNIJ {{ roomOccupiedArray[1][1] }} </p>
         TEST_ROOM: {{ howManyTest }}
         RES_TEST: {{ howManyRes }}
         <br/>
-        <span *ngFor="let roomOccupied of tablicaZajebistosci[0]">{{ roomOccupied  | date:'longDate'}} ,</span>
+ -->
+        <p *ngIf="rooms">Niedostępność pokoju: {{convertFromID(rooms, chosenRoom )}}</p>
+        <span *ngFor="let roomOccupied of roomOccupiedArray[2]">{{ roomOccupied  | date:'longDate'}} ,</span>
+        <div *ngIf="reservations && rooms">
+            <button *ngFor="let roomNU of reservations" (click)="changeRoom(roomNU.roomId)">
+                {{convertFromID(rooms, roomNU.roomId )}}
+            </button>
+        </div>
     </div>
 </div>
