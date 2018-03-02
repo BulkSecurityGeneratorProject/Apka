@@ -30,8 +30,8 @@
                 <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{reservation.id}}</a></td>
                 <td class="centerText">{{reservation.startDate | date:'longDate'}}</td>
                 <td class="centerText">{{reservation.finishDate | date:'longDate'}}</td>
-                <td><!--<span>DNI POMIĘDZY: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'d'}}</span>-->
-                   <!-- liczby: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'longDate'}} -->
+                <td>&lt;!&ndash;<span>{{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'d'}}</span>&ndash;&gt;
+                    liczby: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'longDate'}}
                     <span *ngFor="let daysBet of getDaysBetween(reservation.startDate,reservation.finishDate);">
                         {{ daysBet | date:'longDate' }}
                         <span *ngIf="reservation.roomId == chosenRoom && awsomeFunction()"> {{ addRooomToOccupiedTable(daysBet) }} </span>
