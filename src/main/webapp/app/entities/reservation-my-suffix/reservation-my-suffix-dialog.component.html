@@ -39,15 +39,75 @@
             </select>
             <p>{{ infoArray[2] }}</p>
         </div>
-        <div class="form-group">
+        <div *ngIf="checkResult" class="form-group" (mouseover)="getFreeRooms(reservation.startDate, reservation.finishDate)">
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.room" for="field_room">Room</label>
             <select class="form-control" id="field_room" name="room" [(ngModel)]="reservation.roomId" (blur)="ValidateFunction(3)" [ngStyle]="{'border-color' : getColor(3)}" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="roomOption.id" [hidden]="roomOption.state==true" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.roomNumber}}</option>
+                <option [ngValue]="roomOption.id" [hidden]="checkResult[getRealRoomId(roomOption.id)]==false" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.roomNumber}}</option>
             </select>
             <p>{{ infoArray[3] }}</p>
         </div>
     </div>
+
+    <!-- NOWE DO WYWALENIA POTEM  (click) = "getRoomsLength()" getRealRoomId(98) -->
+<!--
+    <div *ngIf="reservations && rooms" >
+        TO JEST:{{ reservations.length }}
+        Rooms length: {{ rooms.length }}
+
+        D: {{ roomsLength }}
+        rooms: {{ rooms[(rooms.length-1)].roomNumber }}
+        <p *ngIf = "done == 1">
+            Dziala :{{ roomsNumberArr[0] }}
+            Dziala :{{ roomsNumberArr[1] }}
+            Dziala :{{ roomsNumberArr[2] }}
+            Dziala :{{ roomsNumberArr[3] }}
+            Dziala :{{ roomsNumberArr[4] }}
+            Dziala :{{ roomsNumberArr[5] }}
+            Dziala :{{ roomsNumberArr[6] }}
+            0:
+            {{ roomsOccupiedDateArr[0][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[0][1] | date:'longDate' }}
+            1:
+            {{ roomsOccupiedDateArr[1][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[1][1] | date:'longDate' }}
+            3:
+            {{ roomsOccupiedDateArr[3][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][1] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][2] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][3] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][4] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][5] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][6] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[3][7] | date:'longDate' }}
+            2:
+            {{ roomsOccupiedDateArr[2][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[2][1] | date:'longDate' }}
+            4:
+            {{ roomsOccupiedDateArr[4][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[4][1] | date:'longDate' }}
+            5:
+            {{ roomsOccupiedDateArr[5][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[5][1] | date:'longDate' }}
+            6:
+            {{ roomsOccupiedDateArr[6][0] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[6][1] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[6][2] | date:'longDate' }}
+            {{ roomsOccupiedDateArr[6][3] | date:'longDate' }}
+            DATA DO SPRAWDZENIA: {{ dateTocheck | date:'longDate' }}
+            dlugosc: {{ roomsOccupiedDateArr[6].length }}
+            zm2: {{ zm2 }}
+            ID : {{ getRealRoomId(98) }}
+        </p>
+
+        <div *ngIf = "done == 1">
+            <p *ngFor="let check of checkResult"> {{ check }} </p>
+        </div>
+
+    </div>
+<p> DONE = {{ done }} zm : {{ zm }}</p>
+   {{ roomsOccupiedArray }}
+    -->
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
