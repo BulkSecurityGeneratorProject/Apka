@@ -16,7 +16,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
+            <th class="centerText" [hidden]="true"><span jhiTranslate="global.field.id">ID</span></th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.room.roomNumber">Room Number</span></th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.room.numberOfPersons">Number Of Persons</span></th>
             <th class="centerText"><span jhiTranslate="jhipsterApp.room.price">Price</span></th>
@@ -28,7 +28,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let room of rooms ;trackBy: trackId">
-                <td class="centerText"><a [routerLink]="['../room-my-suffix', room.id ]">{{room.id}}</a></td>
+                <td class="centerText" [hidden]="true"><a [routerLink]="['../room-my-suffix', room.id ]">{{ room.id }}</a></td>
                 <td class="centerText">{{room.roomNumber}}</td>
                 <td class="centerText">{{room.numberOfPersons}}</td>
                 <td class="centerText">
@@ -76,5 +76,6 @@
             </tr>
             </tbody>
         </table>
+        <p *ngIf = "reservations">test</p>
     </div>
 </div>
