@@ -195,11 +195,23 @@ reservations: ReservationMySuffix[];
         this.roomOccupiedArray[2].length = 0;
     }
 
+    getRealId(reservationID){
+
+            for( let i = 0; i < this.reservations.length; i++){
+                if(reservationID == this.reservations[i].id){
+                    return (i+1);
+                }
+            }
+            return 99;
+    }
+
+
           @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: string = 'month';
 
   viewDate: Date = new Date();
+    zmTest = "TEST";
 
   modalData: {
     action: string;
@@ -280,4 +292,8 @@ reservations: ReservationMySuffix[];
     });
     this.refresh.next();
   }
+
+    testfunctionCalendar(){
+        this.zmTest = "dsadad";
+    }
 }

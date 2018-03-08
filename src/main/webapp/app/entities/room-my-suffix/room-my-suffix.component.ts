@@ -19,6 +19,9 @@ rooms: RoomMySuffix[];
 
     reservations: ReservationMySuffix[];
 
+    countNumber = 0;
+    lockCounting = 0;
+
     constructor(
         private roomService: RoomMySuffixService,
         private jhiAlertService: JhiAlertService,
@@ -59,4 +62,13 @@ rooms: RoomMySuffix[];
         this.jhiAlertService.error(error.message, null, null);
     }
 
+    getRealId(roomID){
+
+            for( let i = 0; i < this.rooms.length; i++){
+                if(roomID == this.rooms[i].id){
+                    return (i+1);
+                }
+            }
+            return 99;
+    }
 }

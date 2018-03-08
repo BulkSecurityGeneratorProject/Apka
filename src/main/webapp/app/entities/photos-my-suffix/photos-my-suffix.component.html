@@ -23,7 +23,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let photos of photos ;trackBy: trackId">
-                <td><a [routerLink]="['../photos-my-suffix', photos.id ]">{{photos.id}}</a></td>
+                <td><a [routerLink]="['../photos-my-suffix', photos.id ]">{{getRealId(photos.id)}}</a></td>
                 <td>
                     <a *ngIf="photos.roomimg1" (click)="openFile(photos.roomimg1ContentType, photos.roomimg1)">
                         <img [src]="'data:' + photos.roomimg1ContentType + ';base64,' + photos.roomimg1" style="max-height: 30px;" alt="photos image"/>

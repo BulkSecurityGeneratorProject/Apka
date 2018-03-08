@@ -16,7 +16,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="global.field.id" [hidden]="true">ID</span></th>
             <th><span jhiTranslate="jhipsterApp.mainPage.homePageImg">Home Page Img</span></th>
             <th><span jhiTranslate="jhipsterApp.mainPage.homepageText">Homepage Text</span></th>
             <th></th>
@@ -24,7 +24,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let mainPage of mainPages ;trackBy: trackId">
-                <td><a [routerLink]="['../main-page', mainPage.id ]">{{mainPage.id}}</a></td>
+                <td [hidden]="true"><a [routerLink]="['../main-page', mainPage.id ]">{{mainPage.id}}</a></td>
                 <td>
                     <a *ngIf="mainPage.homePageImg" (click)="openFile(mainPage.homePageImgContentType, mainPage.homePageImg)">
                         <img [src]="'data:' + mainPage.homePageImgContentType + ';base64,' + mainPage.homePageImg" style="max-height: 30px;" alt="mainPage image"/>

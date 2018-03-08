@@ -27,7 +27,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let reservation of reservations ;trackBy: trackId">
-                <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{reservation.id}}</a></td>
+                <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{ getRealId(reservation.id) }}</a></td>
                 <td class="centerText">{{reservation.startDate | date:'longDate'}}</td>
                 <td class="centerText">{{reservation.finishDate | date:'longDate'}}</td>
                 <td class="centerText"><!--<span>DNI POMIĘDZY: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'d'}}</span>-->
@@ -99,6 +99,7 @@
 </div>
 <br/>
 <br/>
+<p> {{ zmTest }} </p>
 
 <ng-template #modalContent let-close="close">
     <div class="modal-header">
@@ -162,24 +163,9 @@
         [refresh]="refresh"
         [activeDayIsOpen]="activeDayIsOpen"
         (dayClicked)="dayClicked($event.day)"
+        (dayClicked)="testfunctionCalendar()"
         (eventClicked)="handleEvent('Clicked', $event.event)"
         (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-month-view>
-    <mwl-calendar-week-view
-        *ngSwitchCase="'week'"
-        [viewDate]="viewDate"
-        [events]="events"
-        [refresh]="refresh"
-        (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)">
-    </mwl-calendar-week-view>
-    <mwl-calendar-day-view
-        *ngSwitchCase="'day'"
-        [viewDate]="viewDate"
-        [events]="events"
-        [refresh]="refresh"
-        (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)">
-    </mwl-calendar-day-view>
 </div>
 

@@ -62,4 +62,15 @@ photos: PhotosMySuffix[];
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
+
+    getRealId(photoID){
+
+            for( let i = 0; i < this.photos.length; i++){
+                if(photoID == this.photos[i].id){
+                    return (i+1);
+                }
+            }
+            return 99;
+    }
+
 }

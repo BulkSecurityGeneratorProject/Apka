@@ -53,4 +53,15 @@ clients: ClientMySuffix[];
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
     }
+
+    getRealId(clientID){
+
+            for( let i = 0; i < this.clients.length; i++){
+                if(clientID == this.clients[i].id){
+                    return (i+1);
+                }
+            }
+            return 99;
+    }
+
 }
