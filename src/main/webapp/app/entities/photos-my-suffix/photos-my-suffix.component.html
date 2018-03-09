@@ -16,18 +16,21 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id">ID</span></th>
-            <th><span jhiTranslate="jhipsterApp.photos.roomimg1">Roomimg 1</span></th>
-            <th></th>
+            <th class="centerText"><span jhiTranslate="global.field.id">ID</span></th>
+            <th class="centerText"><span jhiTranslate="jhipsterApp.photos.roomimg1">Roomimg 1</span></th>
+                <th class="centerText"><span jhiTranslate="jhipsterApp.photos.photoDate">photoDate</span></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let photos of photos ;trackBy: trackId">
-                <td><a [routerLink]="['../photos-my-suffix', photos.id ]">{{getRealId(photos.id)}}</a></td>
-                <td>
+                <td class="centerText"><a [routerLink]="['../photos-my-suffix', photos.id ]">{{getRealId(photos.id)}}</a></td>
+                <td class="centerText">
                     <a *ngIf="photos.roomimg1" (click)="openFile(photos.roomimg1ContentType, photos.roomimg1)">
                         <img [src]="'data:' + photos.roomimg1ContentType + ';base64,' + photos.roomimg1" style="max-height: 30px;" alt="photos image"/>
                     </a>
+                </td>
+                <td class="centerText">
                     <span *ngIf="photos.roomimg1">{{photos.roomimg1ContentType}}, {{byteSize(photos.roomimg1)}}</span>
                 </td>
                 <td class="text-right">

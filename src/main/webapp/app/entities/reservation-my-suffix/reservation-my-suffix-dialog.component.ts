@@ -28,11 +28,10 @@ export class ReservationMySuffixDialogComponent implements OnInit {
 
     reservations: ReservationMySuffix[];
 
-    infoArray = ['', '', '', ''];
-    infocontentArray = [ 'Wprowadz date przyjazdu!', 'Wprowadz date wyjazdu!', 'Wybierz Clienta!', 'Wybierz Pokoj!'];
+    infoArray = ['', ''];
     pom = 1;
     disableButton = 1;
-    inputCheck = [ 0, 0, 0, 0, 1];
+    inputCheck = [ 0, 0];
     pomString = "";
     startDateString = "";
     finishDateString = "";
@@ -47,6 +46,12 @@ export class ReservationMySuffixDialogComponent implements OnInit {
     roomsLength = 0;
     reservationsLength = 0;
     done = 0;
+
+    isTyping = [true, true, true, true];
+    Typing(i,logic){
+        this.isTyping[i] = logic;
+    }
+
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -159,18 +164,13 @@ export class ReservationMySuffixDialogComponent implements OnInit {
     }
 
     ValidateFunction(i) {
+        this.Typing(i,false);
         switch(i){
             case 0:
                 this.pom = this.reservation.startDate;
                 break;
             case 1:
                 this.pom = this.reservation.finishDate;
-                break;
-            case 2:
-                this.pom = this.reservation.clientId;
-                break;
-            case 3:
-                this.pom = this.reservation.roomId;
                 break;
         }
         if (this.pom){
@@ -203,11 +203,7 @@ export class ReservationMySuffixDialogComponent implements OnInit {
                 }
             }
         }
-        else{
-            this.infoArray[i] = this.infocontentArray[i];
-            this.inputCheck[i] = 0;
-        }
-        if(this.inputCheck[0] && this.inputCheck[1] && this.inputCheck[2] && this.inputCheck[3] && this.inputCheck[4]){
+        if(this.inputCheck[0] && this.inputCheck[1]){
             this.disableButton = 0;
         }
         else{

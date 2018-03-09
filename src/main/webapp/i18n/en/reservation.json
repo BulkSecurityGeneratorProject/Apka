@@ -8,6 +8,9 @@
             },
             "created": "A new Reservation is created with identifier {{ param }}",
             "updated": "A Reservation is updated with identifier {{ param }}",
+            "requiredPa": " is required!",
+            "requiredPy": " is required!",
+            "invalid": " is invalid!",
             "deleted": "A Reservation is deleted with identifier {{ param }}",
             "delete": {
                 "question": "Are you sure you want to delete Reservation {{ id }}?"

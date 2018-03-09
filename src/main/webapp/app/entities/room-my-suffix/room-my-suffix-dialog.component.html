@@ -18,7 +18,7 @@
                    [(ngModel)]="room.roomNumber" #roomNumber="ngModel" required pattern="[0-9]{1,}" (focus)="Typing(0,true)" (blur)="Typing(0,false)" />
             <div [hidden]="roomNumber.valid || isTyping[0]"
                  class="alert alert-danger" >
-                <span jhiTranslate="jhipsterApp.room.roomNumber">Room Number</span><span jhiTranslate="jhipsterApp.room.required"> is required</span>
+                <span jhiTranslate="jhipsterApp.room.roomNumber">Room Number</span><span jhiTranslate="jhipsterApp.room.requiredPy"> is required</span>
             </div>
         </div>
         <div class="form-group">
@@ -27,7 +27,7 @@
                    [(ngModel)]="room.numberOfPersons" #numberOfPersons="ngModel" required pattern="[0-9]{1,}" (focus)="Typing(1,true)" (blur)="Typing(1,false)" />
             <div [hidden]="numberOfPersons.valid || isTyping[1]"
                  class="alert alert-danger" >
-                <span jhiTranslate="jhipsterApp.room.numberOfPersons">Number of Persons</span><span jhiTranslate="jhipsterApp.room.required"> is required</span>
+                <span jhiTranslate="jhipsterApp.room.numberOfPersons">Number of Persons</span><span jhiTranslate="jhipsterApp.room.requiredPa"> is required</span>
             </div>
         </div>
         <div class="form-group">
@@ -36,7 +36,7 @@
                    [(ngModel)]="room.price" #price="ngModel" required pattern="[0-9]{1,}" (focus)="Typing(2,true)" (blur)="Typing(2,false)"/>
             <div [hidden]="price.valid || isTyping[2]"
                  class="alert alert-danger" >
-                <span jhiTranslate="jhipsterApp.room.price">Price</span><span jhiTranslate="jhipsterApp.room.required"> is required</span>
+                <span jhiTranslate="jhipsterApp.room.price">Price</span><span jhiTranslate="jhipsterApp.room.requiredPa"> is required</span>
             </div>
         </div>
         <div class="form-group">

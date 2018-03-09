@@ -15,7 +15,8 @@
             "detail": {
                 "title": "Photos"
             },
-            "roomimg1": "Roomimg 1",
+            "roomimg1": "Images",
+            "photoDate": "Type  and size of image file",
             "room": "Room"
         }
     }

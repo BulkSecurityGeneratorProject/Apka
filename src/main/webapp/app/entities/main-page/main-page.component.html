@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="jhipsterApp.mainPage.home.title">Main Pages</span>
-        <button class="btn btn-primary float-right jh-create-entity create-main-page" [routerLink]="['/', { outlets: { popup: ['main-page-new'] } }]">
+        <button *ngIf="!mainPages"  class="btn btn-primary float-right jh-create-entity create-main-page" [routerLink]="['/', { outlets: { popup: ['main-page-new'] } }]">
             <span class="fa fa-plus"></span>
             <span  jhiTranslate="jhipsterApp.mainPage.home.createLabel">
             Create new Main Page
@@ -16,7 +16,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-            <th><span jhiTranslate="global.field.id" [hidden]="true">ID</span></th>
+           <!--  <th><span jhiTranslate="global.field.id" [hidden]="false">ID</span></th> -->
             <th><span jhiTranslate="jhipsterApp.mainPage.homePageImg">Home Page Img</span></th>
             <th><span jhiTranslate="jhipsterApp.mainPage.homepageText">Homepage Text</span></th>
             <th></th>
@@ -24,7 +24,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let mainPage of mainPages ;trackBy: trackId">
-                <td [hidden]="true"><a [routerLink]="['../main-page', mainPage.id ]">{{mainPage.id}}</a></td>
+             <!--   <td [hidden]="false"><a [routerLink]="['../main-page', mainPage.id ]">{{mainPage.id}}</a></td> -->
                 <td>
                     <a *ngIf="mainPage.homePageImg" (click)="openFile(mainPage.homePageImgContentType, mainPage.homePageImg)">
                         <img [src]="'data:' + mainPage.homePageImgContentType + ';base64,' + mainPage.homePageImg" style="max-height: 30px;" alt="mainPage image"/>
@@ -34,7 +34,7 @@
                 <td>{{mainPage.homepageText}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
+                        <button type="submit" [hidden]="true"
                                 [routerLink]="['../main-page', mainPage.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
@@ -48,7 +48,7 @@
                             <span class="fa fa-pencil"></span>
                             <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
-                        <button type="submit"
+                        <button type="submit" [hidden]="true"
                                 [routerLink]="['/', { outlets: { popup: 'main-page/'+ mainPage.id + '/delete'} }]"
                                 replaceUrl="true"
                                 queryParamsHandling="merge"

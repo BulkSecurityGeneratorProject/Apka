@@ -10,7 +10,8 @@
             "created": "Utworzono nowy Pokój z identyfikatorem {{ param }}",
             "updated": "Uaktualniono Pokój z identyfikatorem {{ param }}",
             "deleted": "Usunięto Pokój z identyfikatorem {{ param }}",
-            "required": " jest wymagana!",
+            "requiredPa": " jest wymagana!",
+            "requiredPy": " jest wymagany!",
             "invalid": " jest niepoprawny!",
             "delete": {
                 "question": "Czy na pewno chcesz usunąć Pokój {{ id }}?"

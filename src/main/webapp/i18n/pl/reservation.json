@@ -8,6 +8,9 @@
             },
             "created": "Utworzono nowa Rezerwacje z identyfikatorem {{ param }}",
             "updated": "Uaktualniono Rezerwacje z identyfikatorem {{ param }}",
+            "requiredPa": " jest wymagana!",
+            "requiredPy": " jest wymagany!",
+            "invalid": " jest niepoprawny!",
             "deleted": "Usunięto Rezerwacje z identyfikatorem {{ param }}",
             "delete": {
                 "question": "Czy na pewno chcesz usunąć Rezerwacje{{ id }}?"
