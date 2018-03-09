@@ -19,7 +19,7 @@
                        (blur)="ValidateFunction(0)" [ngStyle]="{'border-color' : getColor(0)}" #startDate="ngModel" required
                 />
             </div>
-            <p *ngIf="infoArray[0]">{{ infoArray[0] }}</p>
+            <p *ngIf="infoArray[0]"><span jhiTranslate="jhipsterApp.reservation.wrongDates">ERR</p>
             <div [hidden]="startDate.valid || isTyping[0]" class="alert alert-danger" >
                 <span jhiTranslate="jhipsterApp.reservation.startDate">startDate</span><span jhiTranslate="jhipsterApp.reservation.requiredPa"> is required</span>
             </div>
@@ -31,7 +31,7 @@
                        (focus)="Typing(2,true)" (blur)="ValidateFunction(1)" [ngStyle]="{'border-color' : getColor(1)}" #finishDate="ngModel" required
                 />
             </div>
-            <p *ngIf="infoArray[1]">{{ infoArray[1] }}</p>
+            <p *ngIf="infoArray[1]"><span jhiTranslate="jhipsterApp.reservation.wrongDates">ERR</p>
             <div [hidden]="finishDate.valid || isTyping[1]" class="alert alert-danger">
                 <span jhiTranslate="jhipsterApp.reservation.finishDate">FinishDate</span><span jhiTranslate="jhipsterApp.reservation.requiredPa"> is required</span>
             </div>
