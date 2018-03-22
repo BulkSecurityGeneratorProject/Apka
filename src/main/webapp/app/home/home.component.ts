@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
+
     }
 
     ngOnInit() {

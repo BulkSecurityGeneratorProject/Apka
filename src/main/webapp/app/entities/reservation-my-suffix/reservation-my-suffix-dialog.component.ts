@@ -12,7 +12,22 @@ import { ReservationMySuffixService } from './reservation-my-suffix.service';
 import { ClientMySuffix, ClientMySuffixService } from '../client-my-suffix';
 import { RoomMySuffix, RoomMySuffixService } from '../room-my-suffix';
 import { ResponseWrapper } from '../../shared';
+import {CalendarEvent,CalendarEventAction,CalendarEventTimesChangedEvent} from 'angular-calendar';
 
+const colors: any = {
+red: {
+primary: '#ad2121',
+secondary: '#FAE3E3'
+},
+blue: {
+primary: '#1e90ff',
+secondary: '#D1E8FF'
+},
+yellow: {
+primary: '#e3bc08',
+secondary: '#FDF1BA'
+}
+};
 @Component({
     selector: 'jhi-reservation-my-suffix-dialog',
     templateUrl: './reservation-my-suffix-dialog.component.html'
@@ -191,4 +206,5 @@ export class ReservationMySuffixPopupComponent implements OnInit, OnDestroy {
     ngOnDestroy() {
         this.routeSub.unsubscribe();
     }
+
 }

@@ -25,14 +25,30 @@ secondary: '#D1E8FF'
 yellow: {
 primary: '#e3bc08',
 secondary: '#FDF1BA'
+},
+green: {
+primary: '#008000',
+secondary: '#008000'
+},
+pink: {
+primary: '#FFC0CB',
+secondary: '#FFC0CB'
+},
+black: {
+primary: '#000000',
+secondary: '#000000'
 }
 };
 
 @Component({
     selector: 'jhi-reservation-my-suffix',
-    templateUrl: './reservation-my-suffix.component.html'
+    templateUrl: './reservation-my-suffix.component.html',
+    styleUrls: [
+        'styles.scss'
+    ]
 })
 export class ReservationMySuffixComponent implements OnInit, OnDestroy {
+
 reservations: ReservationMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
@@ -40,7 +56,7 @@ reservations: ReservationMySuffix[];
     clients: ClientMySuffix[];
 
     rooms: RoomMySuffix[];
-
+    napis;
     wasCalled = 0;
     howManyRes = 0;
     howManyResTest = 0;
@@ -51,7 +67,9 @@ reservations: ReservationMySuffix[];
     varPom = 0;
     chosenRoom = 71;
     roomsLength = 0;
-
+    date1:Date;;
+    date2:Date;
+    z=0;
     roomOccupiedArray = [this.roomOccupiedTest, this.roomOccupiedTest2, this.roomOccupiedTest];
 
     constructor(
@@ -84,6 +102,7 @@ reservations: ReservationMySuffix[];
         });
         this.registerChangeInReservations();
 
+
     }
 
     ngOnDestroy() {
@@ -114,18 +133,23 @@ reservations: ReservationMySuffix[];
         }
     }
 
-    getDaysBetween(startDate, finishDate){
+
+
+    getDaysBetween(startDate, finishDate){{
         let Napis="";
         let numberOfDays = (finishDate - startDate)/86400000;
         let daysBetween = [];
-
         this.getRoomsNumber();
         for(let i = 0; i < (numberOfDays-1); i++){
             daysBetween[daysBetween.length] = new Date((startDate-0) + (i+1)*86400000);
             Napis += daysBetween[i];
+            this.date1=daysBetween[0];
+            this.date2=daysBetween[i];
         }
         return daysBetween;
+}
     }
+
 
     addRooomToOccupiedTable(dateOccupied){
         for (let i = 0;  i < (this.roomOccupiedArray[2].length-1); i++){
@@ -195,9 +219,12 @@ reservations: ReservationMySuffix[];
         this.roomOccupiedArray[2].length = 0;
     }
 
-          @ViewChild('modalContent') modalContent: TemplateRef<any>;
+@ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: string = 'month';
+    kolorki=[];
+kolorki2=[];
+
 
   viewDate: Date = new Date();
 
@@ -206,50 +233,11 @@ reservations: ReservationMySuffix[];
     event: CalendarEvent;
   };
 
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fa fa-fw fa-pencil"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      }
-    },
-    {
-      label: '<i class="fa fa-fw fa-times"></i>',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter(iEvent => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      }
-    }
-  ];
 
   refresh: Subject<any> = new Subject();
 
   events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      actions: this.actions
-    },
   ];
-
-  activeDayIsOpen: boolean = true;
-
-  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
-      if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
-        events.length === 0
-      ) {
-        this.activeDayIsOpen = false;
-      } else {
-        this.activeDayIsOpen = true;
-        this.viewDate = date;
-      }
-    }
-  }
-
   eventTimesChanged({
     event,
     newStart,
@@ -266,18 +254,35 @@ reservations: ReservationMySuffix[];
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
+  addEvent(data1,data2): void {
+    if(this.z<this.howManyTest){
+    this.kolorki[0]=colors.red;
+    this.kolorki[1]=colors.blue;
+    this.kolorki[2]=colors.yellow;
+    this.kolorki[3]=colors.green;
+    this.kolorki[4]=colors.pink;
+    this.kolorki[5]=colors.black;
+
+
     this.events.push({
       title: 'New event',
-      start: startOfDay(new Date()),
-      end: endOfDay(new Date()),
-      color: colors.red,
-      draggable: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true
-      }
+      start: new Date(data1),
+      end: new Date(data2),
+      color: this.kolorki[this.z]
     });
+    this.napis='gunwo';
     this.refresh.next();
-  }
+
+
+    this.kolorki2[1]='red';
+    this.kolorki2[2]='blue';
+    this.kolorki2[3]='yellow';
+    this.kolorki2[4]='green';
+    this.kolorki2[5]='pink';
+    this.kolorki2[6]='black';
+
+    this.z+=1;
+    return this.kolorki2[this.z];
+
+  }}
 }
