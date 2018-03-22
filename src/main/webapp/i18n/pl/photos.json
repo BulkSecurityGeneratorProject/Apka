@@ -2,20 +2,21 @@
     "jhipsterApp": {
         "photos" : {
             "home": {
-                "title": "Photos",
-                "createLabel": "Dodaj Photos",
-                "createOrEditLabel": "Dodaj lub edytuj: Photos"
+                "title": "Zdjęcia",
+                "createLabel": "Dodaj Zdjęcie",
+                "createOrEditLabel": "Dodaj lub edytuj: Zdjęcie"
             },
-            "created": "Utworzono nowy Photos z identyfikatorem {{ param }}",
-            "updated": "Uaktualniono Photos z identyfikatorem {{ param }}",
-            "deleted": "Usunięto Photos z identyfikatorem {{ param }}",
+            "created": "Utworzono nowy Zdjęcie z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Zdjęcie z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Zdjęcie z identyfikatorem {{ param }}",
             "delete": {
-                "question": "Czy na pewno chcesz usunąć Photos {{ id }}?"
+                "question": "Czy na pewno chcesz usunąć Zdjęcie {{ id }}?"
             },
             "detail": {
-                "title": "Photos"
+                "title": "Zdjęcia"
             },
-            "roomimg1": "Roomimg 1",
+            "roomimg1": "Zdjęcia",
+            "photoDate": "Typ zdjęcia i rozmiar",
             "room": "Room"
         }
     }

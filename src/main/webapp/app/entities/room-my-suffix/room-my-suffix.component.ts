@@ -5,6 +5,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { RoomMySuffix } from './room-my-suffix.model';
 import { RoomMySuffixService } from './room-my-suffix.service';
 import { Principal, ResponseWrapper } from '../../shared';
+import { ReservationMySuffixService } from '../Reservation-my-suffix/reservation-my-suffix.service';
+import { ReservationMySuffix } from '../Reservation-my-suffix/reservation-my-suffix.model';
 
 @Component({
     selector: 'jhi-room-my-suffix',
@@ -14,6 +16,11 @@ export class RoomMySuffixComponent implements OnInit, OnDestroy {
 rooms: RoomMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
+
+    reservations: ReservationMySuffix[];
+
+    countNumber = 0;
+    lockCounting = 0;
 
     constructor(
         private roomService: RoomMySuffixService,
@@ -30,6 +37,7 @@ rooms: RoomMySuffix[];
             },
             (res: ResponseWrapper) => this.onError(res.json)
         );
+
     }
     ngOnInit() {
         this.loadAll();
@@ -52,5 +60,15 @@ rooms: RoomMySuffix[];
 
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    getRealId(roomID){
+
+            for( let i = 0; i < this.rooms.length; i++){
+                if(roomID == this.rooms[i].id){
+                    return (i+1);
+                }
+            }
+            return 99;
     }
 }

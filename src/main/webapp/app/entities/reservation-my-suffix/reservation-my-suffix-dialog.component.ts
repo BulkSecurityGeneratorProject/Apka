@@ -37,18 +37,36 @@ export class ReservationMySuffixDialogComponent implements OnInit {
     reservation: ReservationMySuffix;
     isSaving: boolean;
 
-    clients: ClientMySuffix[];
-
     rooms: RoomMySuffix[];
 
-    infoArray = ['', '', '', ''];
-    infocontentArray = [ 'Wprowadz date przyjazdu!', 'Wprowadz date wyjazdu!', 'Wybierz Clienta!', 'Wybierz Pokoj!'];
+    clients: ClientMySuffix[];
+
+    reservations: ReservationMySuffix[];
+
+    infoArray = ['', ''];
     pom = 1;
     disableButton = 1;
-    inputCheck = [ 0, 0, 0, 0, 1];
+    inputCheck = [ 0, 0];
     pomString = "";
     startDateString = "";
     finishDateString = "";
+    pomArr = [];
+    roomsOccupiedArray = [[],[]];
+    roomsNumberArr = [];
+    roomsOccupiedDateArr = [[],[],[],[],[],[],[],[],[],[],[],[]];
+    dateTocheck = new Date();
+    dateTocheckFinish = new Date();
+    checkResult = [];
+
+    roomsLength = 0;
+    reservationsLength = 0;
+    done = 0;
+
+    isTyping = [true, true, true, true];
+    Typing(i,logic){
+        this.isTyping[i] = logic;
+    }
+
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -66,6 +84,56 @@ export class ReservationMySuffixDialogComponent implements OnInit {
             .subscribe((res: ResponseWrapper) => { this.clients = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
         this.roomService.query()
             .subscribe((res: ResponseWrapper) => { this.rooms = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
+        this.reservationService.query().subscribe(
+            (res: ResponseWrapper) => {
+                this.reservations = res.json;
+            },
+            (res: ResponseWrapper) => this.onError(res.json)
+        );
+    }
+
+    getFreeRooms(startDateToCheck, finishDateToCheck){
+
+        this.roomsLength = this.rooms.length;
+        for(let i = 0; i < this.roomsLength; i++){
+            this.roomsNumberArr[i] = this.rooms[i].id;
+            this.checkResult[i] = true;
+        }
+
+        this.reservationsLength = this.reservations.length;
+        if(this.done == 0 ){
+           for(let i = 0; i < this.reservationsLength; i++){
+                for(let j = 0; j < this.roomsLength; j++){
+                    if( this.reservations[i].roomId ==  this.rooms[j].id){
+                        this.roomsOccupiedDateArr[j][this.roomsOccupiedDateArr[j].length] = this.reservations[i].startDate;
+                        this.roomsOccupiedDateArr[j][this.roomsOccupiedDateArr[j].length] = this.reservations[i].finishDate;
+                    }
+                }
+           }
+        }
+        this.done = 1;
+        this.dateTocheck = new Date(startDateToCheck);
+        this.dateTocheckFinish = new Date(finishDateToCheck);
+        for(let k = 0; k < this.roomsLength; k++){
+            for(let i = 0; i < this.roomsOccupiedDateArr[k].length; i += 2){
+                if( this.dateTocheckFinish < this.roomsOccupiedDateArr[k][i] || this.dateTocheck > this.roomsOccupiedDateArr[k][i+1]){
+                    this.checkResult[k] = true;
+                }
+                else{
+                    this.checkResult[k] = false;
+                    break;
+                }
+            }
+        }
+    }
+
+    getRealRoomId(id){
+        for(let i = 0; i < this.roomsLength; i++){
+            if(this.rooms[i].id == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
     clear() {
@@ -111,18 +179,13 @@ export class ReservationMySuffixDialogComponent implements OnInit {
     }
 
     ValidateFunction(i) {
+        this.Typing(i,false);
         switch(i){
             case 0:
                 this.pom = this.reservation.startDate;
                 break;
             case 1:
                 this.pom = this.reservation.finishDate;
-                break;
-            case 2:
-                this.pom = this.reservation.clientId;
-                break;
-            case 3:
-                this.pom = this.reservation.roomId;
                 break;
         }
         if (this.pom){
@@ -155,11 +218,7 @@ export class ReservationMySuffixDialogComponent implements OnInit {
                 }
             }
         }
-        else{
-            this.infoArray[i] = this.infocontentArray[i];
-            this.inputCheck[i] = 0;
-        }
-        if(this.inputCheck[0] && this.inputCheck[1] && this.inputCheck[2] && this.inputCheck[3] && this.inputCheck[4]){
+        if(this.inputCheck[0] && this.inputCheck[1]){
             this.disableButton = 0;
         }
         else{

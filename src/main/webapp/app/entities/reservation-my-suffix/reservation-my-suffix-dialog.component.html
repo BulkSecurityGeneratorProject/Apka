@@ -16,43 +16,55 @@
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.startDate" for="field_startDate">Start Date</label>
             <div class="d-flex">
                 <input id="field_startDate" type="datetime-local" class="form-control" name="startDate" [(ngModel)]="reservation.startDate"
-                       (blur)="ValidateFunction(0)" [ngStyle]="{'border-color' : getColor(0)}"
+                       (blur)="ValidateFunction(0)" [ngStyle]="{'border-color' : getColor(0)}" #startDate="ngModel" required
                 />
             </div>
-            <p>{{ infoArray[0] }}</p>
+            <p *ngIf="infoArray[0]"><span jhiTranslate="jhipsterApp.reservation.wrongDates">ERR</p>
+            <div [hidden]="startDate.valid || isTyping[0]" class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.reservation.startDate">startDate</span><span jhiTranslate="jhipsterApp.reservation.requiredPa"> is required</span>
+            </div>
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.finishDate" for="field_finishDate">Finish Date</label>
             <div class="d-flex">
                 <input id="field_finishDate" type="datetime-local" class="form-control" name="finishDate" [(ngModel)]="reservation.finishDate"
-                       (blur)="ValidateFunction(1)" [ngStyle]="{'border-color' : getColor(1)}"
+                       (focus)="Typing(2,true)" (blur)="ValidateFunction(1)" [ngStyle]="{'border-color' : getColor(1)}" #finishDate="ngModel" required
                 />
             </div>
-            <p>{{ infoArray[1] }}</p>
+            <p *ngIf="infoArray[1]"><span jhiTranslate="jhipsterApp.reservation.wrongDates">ERR</p>
+            <div [hidden]="finishDate.valid || isTyping[1]" class="alert alert-danger">
+                <span jhiTranslate="jhipsterApp.reservation.finishDate">FinishDate</span><span jhiTranslate="jhipsterApp.reservation.requiredPa"> is required</span>
+            </div>
         </div>
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.client" for="field_client">Client</label>
-            <select class="form-control" id="field_client" name="client" [(ngModel)]="reservation.clientId" (blur)="ValidateFunction(2)" [ngStyle]="{'border-color' : getColor(2)}" >
+            <select class="form-control" id="field_client" name="client" [(ngModel)]="reservation.clientId" (focus)="Typing(2,true)" (blur)="Typing(2,false)"
+                    #client="ngModel" required>
                 <option [ngValue]="null"></option>
                 <option [ngValue]="clientOption.id" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.name}} {{clientOption.surname}}</option>
             </select>
-            <p>{{ infoArray[2] }}</p>
+            <div [hidden]="client.valid || isTyping[2]" class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.reservation.client">Client</span><span jhiTranslate="jhipsterApp.reservation.requiredPy"> is required</span>
+            </div>
         </div>
-        <div class="form-group">
+        <div *ngIf="checkResult" class="form-group" (mouseover)="getFreeRooms(reservation.startDate, reservation.finishDate)">
             <label class="form-control-label" jhiTranslate="jhipsterApp.reservation.room" for="field_room">Room</label>
-            <select class="form-control" id="field_room" name="room" [(ngModel)]="reservation.roomId" (blur)="ValidateFunction(3)" [ngStyle]="{'border-color' : getColor(3)}" >
+            <select class="form-control" id="field_room" name="room" [(ngModel)]="reservation.roomId" (focus)="Typing(3,true)" (blur)="Typing(3,false)" #room="ngModel" required >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="roomOption.id" [hidden]="roomOption.state==true" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.roomNumber}}</option>
+                <option [ngValue]="roomOption.id" [hidden]="checkResult[getRealRoomId(roomOption.id)]==false" *ngFor="let roomOption of rooms; trackBy: trackRoomById">{{roomOption.roomNumber}}</option>
             </select>
-            <p>{{ infoArray[3] }}</p>
+            <div [hidden]="room.valid || isTyping[3]" class="alert alert-danger" >
+                <span jhiTranslate="jhipsterApp.reservation.room">Room</span><span jhiTranslate="jhipsterApp.reservation.requiredPy"> is required</span>
+            </div>
         </div>
     </div>
+
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()" (click)="addEvent()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
         </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving || disableButton" class="btn btn-primary">
             <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
         </button>
     </div>

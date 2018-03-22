@@ -10,7 +10,8 @@
             "created": "A new Room is created with identifier {{ param }}",
             "updated": "A Room is updated with identifier {{ param }}",
             "deleted": "A Room is deleted with identifier {{ param }}",
-            "required": " is required!",
+            "requiredPa": " jest wymagana!",
+            "requiredPy": " jest wymagany!",
             "invalid": " is invalid!",
             "delete": {
                 "question": "Are you sure you want to delete Room {{ id }}?"

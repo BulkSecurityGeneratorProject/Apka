@@ -26,16 +26,16 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let reservation of reservations ;trackBy: trackId" >
-                <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{reservation.id}}</a></td>
+            <tr *ngFor="let reservation of reservations ;trackBy: trackId">
+                <td class="centerText"><a [routerLink]="['../reservation-my-suffix', reservation.id ]">{{ getRealId(reservation.id) }}</a></td>
                 <td class="centerText">{{reservation.startDate | date:'longDate'}}</td>
                 <td class="centerText">{{reservation.finishDate | date:'longDate'}}</td>
                 <td class="centerText"><!--<span>DNI POMIĘDZY: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'d'}}</span>-->
                     <!-- liczby: {{ getDaysBetween(reservation.startDate,reservation.finishDate) | date:'longDate'}} -->
                     <span *ngFor="let daysBet of getDaysBetween(reservation.startDate,reservation.finishDate);">
+                        {{ daysBet | date:'longDate' }}
                         <span *ngIf="reservation.roomId == chosenRoom && awsomeFunction()"> {{ addRooomToOccupiedTable(daysBet) }} </span>
                     </span>
-
                 </td>
                 <span *ngIf="reservation.roomId == chosenRoom" [hidden] ="true">{{ setWasCalled() }}</span>
                 <td class="centerText">
@@ -43,7 +43,6 @@
                         <a *ngIf="clients" [routerLink]="['../client-my-suffix', reservation.clientId  ]" >{{convertFromID(clients, reservation.clientId )}}</a>
                     </div>
                 </td>
-
                 <td class="centerText">
                     <div *ngIf="reservation.roomId">
                         <a *ngIf="rooms" [routerLink]="['../room-my-suffix', reservation.roomId  ]" >{{convertFromID(rooms, reservation.roomId )}}</a>

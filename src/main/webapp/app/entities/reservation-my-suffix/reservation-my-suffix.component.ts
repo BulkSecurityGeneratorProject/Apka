@@ -48,7 +48,6 @@ secondary: '#000000'
     ]
 })
 export class ReservationMySuffixComponent implements OnInit, OnDestroy {
-
 reservations: ReservationMySuffix[];
     currentAccount: any;
     eventSubscriber: Subscription;
@@ -101,7 +100,6 @@ reservations: ReservationMySuffix[];
             this.currentAccount = account;
         });
         this.registerChangeInReservations();
-
 
     }
 
@@ -220,6 +218,18 @@ reservations: ReservationMySuffix[];
     }
 
 @ViewChild('modalContent') modalContent: TemplateRef<any>;
+    getRealId(reservationID){
+
+            for( let i = 0; i < this.reservations.length; i++){
+                if(reservationID == this.reservations[i].id){
+                    return (i+1);
+                }
+            }
+            return 99;
+    }
+
+
+          @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: string = 'month';
     kolorki=[];
@@ -227,6 +237,7 @@ kolorki2=[];
 
 
   viewDate: Date = new Date();
+    zmTest = "TEST";
 
   modalData: {
     action: string;

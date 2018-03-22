@@ -2,12 +2,12 @@
     <h4 *ngIf="contacts" class="display-4" jhiTranslate="home.agroName" translateValues="{AgroName: '{{contacts[(contacts.length-1)].localName}}'}">Welcome, Java Hipster!</h4>
     <br/>
 </div>
-<div class="row">
 
+<div class="row">
 
     <div class="col-md-5">
         <div *ngIf="mainPages" class="cont">
-            <img class="imgMain" [src]="'data:' + mainPages[(mainPages.length-1)].homePageImgContentType + ';base64,' + mainPages[(mainPages.length-1)].homePageImg" style="max-height: 100px;" *ngIf="mainPages[(mainPages.length-1)].homePageImg" alt="mainPages[(mainPages.length-1)] image"/>
+            <img class="imgMain" [src]="'data:' + mainPages[(mainPages.length-1)].homePageImgContentType + ';base64,' + mainPages[(mainPages.length-1)].homePageImg" *ngIf="mainPages[(mainPages.length-1)].homePageImg" alt="mainPages[(mainPages.length-1)] image"/>
         </div>
     </div>
 

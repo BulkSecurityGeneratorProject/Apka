@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             <tr *ngFor="let client of clients ;trackBy: trackId">
-                <td class="centerText"><a [routerLink]="['../client-my-suffix', client.id ]">{{client.id}}</a></td>
+                <td class="centerText"><a [routerLink]="['../client-my-suffix', client.id ]">{{ getRealId(client.id) }}</a></td>
                 <td class="centerText">{{client.name}}</td>
                 <td class="centerText">{{client.surname}}</td>
                 <td class="centerText">{{client.phoneNumber}}</td>
